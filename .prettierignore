@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+.next
+
+# Build outputs
+build
+dist
+out
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Config
+/.husky
