@@ -1,35 +1,17 @@
 import { ReactNode } from 'react'
 
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'TailsCare',
-  description: 'Monitoring app for cats and dogs',
+  title: {
+    template: '%s | TailsCare',
+    default: 'TailsCare - Monitoring for cats and dogs',
+  },
+  description: 'The best app for your pets',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode
-}>) {
-  return (
-    <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
-      </body>
-    </html>
-  )
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return children
 }
