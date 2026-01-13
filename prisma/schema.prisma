@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  phone     String
+  name      String
+  avatarUrl String?  @map("avatar_url")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  pets Pet[]
+}
+
+enum PetType {
+  CAT
+  DOG
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model Pet {
+  id        String   @id @default(uuid())
+  name      String
+  type      PetType
+  gender    Gender
+  breed     String?
+  birthday  DateTime
+  avatarUrl String?
+
+  targetWeight Float? @map("target_weight")
+
+  ownerId String @map("owner_id")
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  weightRecords WeightRecord[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WeightRecord {
+  id     String   @id @default(uuid())
+  weight Float
+  date   DateTime @default(now())
+
+  petId String @map("pet_id")
+  pet   Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+}

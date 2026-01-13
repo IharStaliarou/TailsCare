@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { routing } from '@/i18n/routing'
-import { Locale } from '@/i18n/types'
+import { TLocale } from '@/i18n/types'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -26,7 +26,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params
 
-  if (!routing.locales.includes(locale as Locale)) {
+  if (!routing.locales.includes(locale as TLocale)) {
     notFound()
   }
 

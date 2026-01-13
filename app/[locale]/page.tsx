@@ -1,7 +1,13 @@
-import { getMessages } from 'next-intl/server'
+import { getDictionary } from '@/i18n/get-dictionary'
+import { TLocale } from '@/i18n/types'
 
-export default async function HomePage() {
-  const messages = await getMessages()
+interface IHomePageProps {
+  params: Promise<{ locale: string }>
+}
+
+export default async function HomePage({ params }: IHomePageProps) {
+  const { locale } = await params
+  const messages = await getDictionary(locale as TLocale)
 
   return (
     <div className='flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black'>
