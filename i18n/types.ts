@@ -1,6 +1,6 @@
 import { routing } from './routing'
 
-export type Locale = (typeof routing.locales)[number]
+export type TLocale = (typeof routing.locales)[number]
 
 export interface MessageObject {
   [key: string]: string | MessageObject

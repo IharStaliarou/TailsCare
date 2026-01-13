@@ -1,7 +1,7 @@
 import { getRequestConfig } from 'next-intl/server'
 
 import { routing } from './routing'
-import { Locale, MessageObject } from './types'
+import { MessageObject, TLocale } from './types'
 
 function mergeMessages(
   defaultMsgs: MessageObject,
@@ -47,7 +47,7 @@ function mergeMessages(
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale
 
-  if (!locale || !routing.locales.includes(locale as Locale)) {
+  if (!locale || !routing.locales.includes(locale as TLocale)) {
     locale = routing.defaultLocale
   }
 
