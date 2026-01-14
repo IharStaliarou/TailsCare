@@ -2,5 +2,46 @@
   "HomePage": {
     "title": "TailsCare",
     "description": "Мониторинг приложение для кошек и собак"
+  },
+  "common": {
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Изменить",
+    "add": "Добавить",
+    "loading": "Загрузка...",
+    "error": "Что-то пошло не так",
+    "required": "Обязательное поле",
+    "back": "Назад",
+    "continue": "Продолжить"
+  },
+  "navigation": {
+    "home": "Главная",
+    "dashboard": "Панель управления",
+    "pets": "Мои питомцы",
+    "settings": "Настройки",
+    "profile": "Профиль"
+  },
+  "forms": {
+    "petName": "Кличка питомца",
+    "petType": "Вид животного",
+    "breed": "Порода",
+    "gender": "Пол",
+    "birthday": "Дата рождения",
+    "weight": "Вес (кг)",
+    "targetWeight": "Целевой вес (кг)",
+    "placeholder": {
+      "select": "Выберите вариант",
+      "enterName": "например, Бадди",
+      "enterBreed": "например, Золотистый ретривер"
+    }
+  },
+  "petTypes": {
+    "DOG": "Собака",
+    "CAT": "Кошка"
+  },
+  "genders": {
+    "MALE": "Самец",
+    "FEMALE": "Самка"
   }
 }

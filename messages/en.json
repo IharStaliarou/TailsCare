@@ -2,5 +2,46 @@
   "HomePage": {
     "title": "TailsCare",
     "description": "Monitoring app for cats and dogs"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "required": "Required field",
+    "back": "Back",
+    "continue": "Continue"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "pets": "My Pets",
+    "settings": "Settings",
+    "profile": "Profile"
+  },
+  "forms": {
+    "petName": "Pet Name",
+    "petType": "Pet Type",
+    "breed": "Breed",
+    "gender": "Gender",
+    "birthday": "Birthday",
+    "weight": "Weight (kg)",
+    "targetWeight": "Target Weight (kg)",
+    "placeholder": {
+      "select": "Select an option",
+      "enterName": "e.g. Buddy",
+      "enterBreed": "e.g. Golden Retriever"
+    }
+  },
+  "petTypes": {
+    "DOG": "Dog",
+    "CAT": "Cat"
+  },
+  "genders": {
+    "MALE": "Male",
+    "FEMALE": "Female"
   }
 }
