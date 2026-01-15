@@ -1,12 +1,12 @@
 {
-  "HomePage": {
-    "title": "TailsCare",
-    "description": "Monitoring app for cats and dogs"
-  },
   "common": {
+    "title": "TailsCare",
+    "description": "Monitoring app for cats and dogs",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
+    "open": "Open",
+    "close": "Close",
     "edit": "Edit",
     "add": "Add",
     "loading": "Loading...",
@@ -18,9 +18,13 @@
   "navigation": {
     "home": "Home",
     "dashboard": "Dashboard",
+    "calendar": "Calendar",
     "pets": "My Pets",
     "settings": "Settings",
-    "profile": "Profile"
+    "profile": "Profile",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out"
   },
   "forms": {
     "petName": "Pet Name",
@@ -43,5 +47,8 @@
   "genders": {
     "MALE": "Male",
     "FEMALE": "Female"
+  },
+  "ariaLabels": {
+    "toggleBurger": "Toggle mobile menu"
   }
 }

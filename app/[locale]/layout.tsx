@@ -1,9 +1,10 @@
 import { ReactNode } from 'react'
 
+import { Header } from '@/components/layout/Header/Header'
 import { routing } from '@/i18n/routing'
 import { TLocale } from '@/i18n/types'
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
+import { getMessages, setRequestLocale } from 'next-intl/server'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
@@ -16,6 +17,10 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 })
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
 
 export default async function LocaleLayout({
   children,
@@ -30,15 +35,16 @@ export default async function LocaleLayout({
     notFound()
   }
 
+  setRequestLocale(locale)
+
   const messages = await getMessages()
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className='bg-background min-h-screen antialiased'>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className='flex min-h-screen flex-col'>
-            <main className='grow'>{children}</main>
-          </div>
+      <body className='bg-background flex min-h-screen flex-col antialiased'>
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          <main className='grow'>{children}</main>
         </NextIntlClientProvider>
       </body>
     </html>
