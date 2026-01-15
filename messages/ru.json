@@ -1,12 +1,12 @@
 {
-  "HomePage": {
-    "title": "TailsCare",
-    "description": "Мониторинг приложение для кошек и собак"
-  },
   "common": {
+    "title": "TailsCare",
+    "description": "Мониторинг приложение для кошек и собак",
     "save": "Сохранить",
     "cancel": "Отмена",
     "delete": "Удалить",
+    "open": "Открыть",
+    "close": "Закрыть",
     "edit": "Изменить",
     "add": "Добавить",
     "loading": "Загрузка...",
@@ -18,9 +18,13 @@
   "navigation": {
     "home": "Главная",
     "dashboard": "Панель управления",
+    "calendar": "Календарь",
     "pets": "Мои питомцы",
     "settings": "Настройки",
-    "profile": "Профиль"
+    "profile": "Профиль",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "signOut": "Выйти"
   },
   "forms": {
     "petName": "Кличка питомца",
@@ -43,5 +47,8 @@
   "genders": {
     "MALE": "Самец",
     "FEMALE": "Самка"
+  },
+  "ariaLabels": {
+    "toggleBurger": "Переключить мобильное меню"
   }
 }
