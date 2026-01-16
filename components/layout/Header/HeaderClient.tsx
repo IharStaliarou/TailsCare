@@ -63,7 +63,7 @@ export const HeaderClient = ({ user }: IHeaderClientProps) => {
       </nav>
 
       <BurgerButton
-        className='absolute top-3 right-4 z-50 md:hidden'
+        className='absolute top-3 right-5 z-50 md:hidden'
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
       />
