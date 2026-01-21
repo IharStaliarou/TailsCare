@@ -21,19 +21,19 @@ export const BurgerButton = ({
       <div className='flex flex-col gap-1.5'>
         <span
           className={clsx(
-            'h-0.5 bg-white transition-all',
+            'h-0.5 bg-black transition-all',
             isMobileMenuOpen ? 'w-6 translate-y-2 rotate-45' : 'w-6'
           )}
         />
         <span
           className={clsx(
-            'h-0.5 bg-white transition-all',
+            'h-0.5 bg-black transition-all',
             isMobileMenuOpen ? 'w-0' : 'w-6'
           )}
         />
         <span
           className={clsx(
-            'h-0.5 bg-white transition-all',
+            'h-0.5 bg-black transition-all',
             isMobileMenuOpen ? 'w-6 -translate-y-2 -rotate-45' : 'w-6'
           )}
         />

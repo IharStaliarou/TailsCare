@@ -16,10 +16,11 @@ export const Logo = ({ closeMobileMenu, className }: ILogoProps) => {
     <Link
       href='/'
       onClick={closeMobileMenu}
-      className={`flex items-center gap-2.5 ${className}`}
+      className={`hover:text-primary-hover text-primary flex items-center gap-2.5 transition-colors duration-300 ${className}`}
     >
+      {/* TODO: Create custom logo */}
       <LogoIcon className='h-8 w-8' />
-      <span className='text-2xl text-white'>{t('title')}</span>
+      <span className='text-4xl font-bold'>{t('title')}</span>
     </Link>
   )
 }

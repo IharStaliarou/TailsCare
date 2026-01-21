@@ -5,16 +5,11 @@ import { routing } from '@/i18n/routing'
 import { TLocale } from '@/i18n/types'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Lexend } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const lexend = Lexend({
+  variable: '--font-lexend',
   subsets: ['latin'],
 })
 
@@ -40,11 +35,11 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className='bg-background flex min-h-screen flex-col antialiased'>
+    <html lang={locale}>
+      <body className={`${lexend.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main className='grow'>{children}</main>
+          <main className='w-full px-4 py-6 md:px-6 md:py-9.5 2xl:px-17'>{children}</main>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -16,34 +16,31 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
     return (
       <div className={clsx('flex w-full flex-col gap-1.5', containerClassName)}>
         {label && (
-          <label
-            htmlFor={id}
-            className='ml-1 text-sm font-medium text-zinc-700 dark:text-zinc-300'
-          >
+          <label htmlFor={id} className='text-sm font-medium text-gray-600'>
             {label}
           </label>
         )}
 
         <div className='relative flex items-center'>
-          {icon && <div className='absolute left-3 text-zinc-500'>{icon}</div>}
+          {icon && <div className='absolute left-3 text-gray-600'>{icon}</div>}
 
           <input
             id={id}
             ref={ref}
             className={clsx(
-              'w-full rounded-lg border bg-transparent px-4 py-2.5 text-sm transition-all focus:outline-none',
-              'placeholder:text-zinc-500 disabled:cursor-not-allowed disabled:opacity-50',
+              'w-full rounded-lg border px-4 py-3 text-sm transition-all focus:outline-none',
+              'placeholder:text-gray-300 disabled:cursor-not-allowed disabled:opacity-50',
               icon && 'pl-10',
               hasError
                 ? 'border-red-500 focus:ring-1 focus:ring-red-500'
-                : 'border-zinc-800 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 dark:border-zinc-700',
+                : 'focus:border-primary focus:ring-primary border-gray-600 focus:ring-1',
               className
             )}
             {...props}
           />
         </div>
 
-        {hasError && <span className='ml-1 text-xs text-red-500'>{error}</span>}
+        {hasError && <span className='text-xs text-red-500'>{error}</span>}
       </div>
     )
   }
