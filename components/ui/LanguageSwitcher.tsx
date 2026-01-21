@@ -19,18 +19,16 @@ export const LanguageSwitcher = ({ className }: ILanguageSwitcherProps) => {
     router.replace(pathname, { locale: newLocale })
   }
   return (
-    <div
-      className={`flex gap-1 rounded-lg border border-zinc-800 bg-zinc-900 p-1 ${className}`}
-    >
+    <div className={`flex gap-1 rounded-lg border-gray-600 bg-gray-600 p-1 ${className}`}>
       {LANGUAGES.map((lang) => (
         <button
           key={lang}
           onClick={() => handleLanguageChange(lang)}
           className={clsx(
-            'flex h-7 w-1/2 items-center justify-center rounded-md text-xs font-bold uppercase transition-all md:w-9.5',
+            'flex h-7 w-1/2 items-center justify-center rounded-md text-xs font-medium uppercase transition-all duration-300 md:w-9.5',
             locale === lang
-              ? 'bg-orange-500 text-white shadow-sm'
-              : 'text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
+              ? 'bg-secondary hover:bg-secondary-hover text-white'
+              : 'text-gray-400 hover:bg-gray-700 hover:text-white active:bg-gray-100'
           )}
         >
           {LANGUAGES_LABELS[lang]}
