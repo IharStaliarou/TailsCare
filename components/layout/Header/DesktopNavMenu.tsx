@@ -3,9 +3,10 @@
 import { AuthActionsBlock } from '@/components/AuthActionsBlock'
 import { Logo } from '@/components/Logo/Logo'
 import { getLinks } from '@/constants/navigation'
-import { Link } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/routing'
 import { IUser } from '@/interfaces/user'
 import { useUIStore } from '@/store/use-ui-store'
+import clsx from 'clsx'
 import { useTranslations } from 'next-intl'
 
 export const DesktopNavigation = ({
@@ -17,6 +18,7 @@ export const DesktopNavigation = ({
   isAuthenticated: boolean
   links: ReturnType<typeof getLinks>
 }) => {
+  const pathname = usePathname()
   const { closeMobileMenu } = useUIStore()
   const t = useTranslations('navigation')
 
@@ -25,16 +27,22 @@ export const DesktopNavigation = ({
       <Logo closeMobileMenu={closeMobileMenu} />
 
       <ul className='flex items-center gap-8'>
-        {links.map(({ label, href }) => (
-          <li key={href}>
-            <Link
-              href={href}
-              className='hover:text-primary-hover font-medium transition-colors'
-            >
-              {t(label)}
-            </Link>
-          </li>
-        ))}
+        {links.map(({ label, href }) => {
+          const isActive = href === pathname
+          return (
+            <li key={href}>
+              <Link
+                href={href}
+                className={clsx(
+                  'hover:text-primary-hover font-medium transition-colors',
+                  isActive ? 'text-primary' : ''
+                )}
+              >
+                {t(label)}
+              </Link>
+            </li>
+          )
+        })}
       </ul>
 
       <AuthActionsBlock

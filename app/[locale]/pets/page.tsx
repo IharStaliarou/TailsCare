@@ -1,12 +1,30 @@
-'use client'
-
 import { PlusIcon } from '@/components/icons/PlusIcon'
 import { PetsList } from '@/components/PetsList'
 import { AppButton } from '@/components/ui/AppButton'
-import { useTranslations } from 'next-intl'
+import { IPet } from '@/interfaces/user'
+import { getTranslations } from 'next-intl/server'
 
-export default function PetsPage() {
-  const t = useTranslations('common')
+// TODO: delete when db will be ready
+const PETS: IPet[] = [
+  {
+    id: '123',
+    name: 'Charlie',
+    type: 'DOG',
+    avatarUrl: '/image1.png',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '124',
+    name: 'Max',
+    type: 'CAT',
+    avatarUrl: '/image2.png',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+]
+export default async function PetsPage() {
+  const t = await getTranslations('common')
   return (
     <section className='flex flex-col gap-5'>
       <AppButton
@@ -14,7 +32,7 @@ export default function PetsPage() {
         icon={<PlusIcon className='w-4 stroke-2' />}
         className='max-w-fit self-end'
       />
-      <PetsList />
+      <PetsList pets={PETS} />
     </section>
   )
 }

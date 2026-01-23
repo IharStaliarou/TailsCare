@@ -13,7 +13,8 @@
     "error": "Something went wrong",
     "required": "Required field",
     "back": "Back",
-    "continue": "Continue"
+    "continue": "Continue",
+    "details": "Details"
   },
   "navigation": {
     "home": "Home",
@@ -40,6 +41,9 @@
       "enterBreed": "e.g. Golden Retriever"
     }
   },
+  "petsPage": {
+    "noPets": "You don't have pets yet!"
+  },
   "petTypes": {
     "DOG": "Dog",
     "CAT": "Cat"
@@ -50,5 +54,8 @@
   },
   "ariaLabels": {
     "toggleBurger": "Toggle mobile menu"
+  },
+  "error": {
+    "somethingError": "Something went wrong! Please try again later."
   }
 }

@@ -25,7 +25,7 @@ export const LanguageSwitcher = ({ className }: ILanguageSwitcherProps) => {
           key={lang}
           onClick={() => handleLanguageChange(lang)}
           className={clsx(
-            'flex h-7 w-1/2 items-center justify-center rounded-md text-xs font-medium uppercase transition-all duration-300 md:w-9.5',
+            'flex h-full w-1/2 items-center justify-center rounded-md text-xs font-medium uppercase transition-all duration-300 md:w-9.5',
             locale === lang
               ? 'bg-secondary hover:bg-secondary-hover text-white'
               : 'text-gray-400 hover:bg-gray-700 hover:text-white active:bg-gray-100'
