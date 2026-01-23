@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 
 import { Link } from '@/i18n/routing'
 import clsx from 'clsx'
@@ -7,20 +7,23 @@ type TVariant = 'primary' | 'secondary' | 'outline' | 'icon'
 
 export interface IAppButtonProps extends HTMLAttributes<HTMLButtonElement> {
   label?: string
+  icon?: ReactNode
   className?: string
   variant?: TVariant
   disabled?: boolean
   to?: string
 }
 export const AppButton = ({
+  children,
   label,
+  icon,
   className,
   variant = 'primary',
   disabled,
   to,
 }: IAppButtonProps) => {
   const baseStyles =
-    'md:h-full px-3 md:py-0 py-3 rounded-lg flex justify-center items-center transition duration-300'
+    'md:h-full px-3 py-3 rounded-lg flex justify-center items-center transition duration-300 gap-1.5'
   const variantStyles = {
     primary:
       'bg-primary hover:bg-primary-hover active:bg-primary-active active:text-primary',
@@ -40,7 +43,7 @@ export const AppButton = ({
 
   const LinkButton = (
     <Link href={to!} className={`${buttonStyles} ${className}`}>
-      {label}
+      {icon} {label} {children}
     </Link>
   )
 
@@ -48,5 +51,9 @@ export const AppButton = ({
     return LinkButton
   }
 
-  return <button className={`${buttonStyles} ${className}`}>{label}</button>
+  return (
+    <button className={`${buttonStyles} ${className}`}>
+      {icon} {label} {children}
+    </button>
+  )
 }

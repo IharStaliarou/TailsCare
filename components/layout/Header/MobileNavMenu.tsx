@@ -13,16 +13,15 @@ export const MobileNavigation = ({
   user,
   isAuthenticated,
   links,
-  t,
   isMobileMenuOpen,
 }: {
   user: IUser | null
   isAuthenticated: boolean
   links: ReturnType<typeof getLinks>
-  t: ReturnType<typeof useTranslations<'navigation'>>
   isMobileMenuOpen: boolean
 }) => {
   const { closeMobileMenu } = useUIStore()
+  const t = useTranslations('navigation')
 
   return (
     <>
@@ -42,7 +41,7 @@ export const MobileNavigation = ({
                 onClick={closeMobileMenu}
                 className='hover:text-primary-hover font-medium transition-colors'
               >
-                {t(label.replace('navigation.', ''))}
+                {t(label)}
               </Link>
             </li>
           ))}
