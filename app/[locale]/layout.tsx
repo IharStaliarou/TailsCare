@@ -39,7 +39,9 @@ export default async function LocaleLayout({
       <body className={`${lexend.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main className='w-full px-4 py-6 md:px-6 md:py-9.5 2xl:px-17'>{children}</main>
+          <main className='mt-16 w-full px-4 py-6 md:mt-20 md:px-6 md:py-9.5 2xl:px-17'>
+            {children}
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>

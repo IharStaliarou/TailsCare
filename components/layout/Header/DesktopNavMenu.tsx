@@ -12,14 +12,13 @@ export const DesktopNavigation = ({
   user,
   isAuthenticated,
   links,
-  t,
 }: {
   user: IUser | null
   isAuthenticated: boolean
   links: ReturnType<typeof getLinks>
-  t: ReturnType<typeof useTranslations<'navigation'>>
 }) => {
   const { closeMobileMenu } = useUIStore()
+  const t = useTranslations('navigation')
 
   return (
     <nav className='hidden px-4 md:flex md:h-full md:justify-between md:px-6 2xl:mx-auto 2xl:w-360'>
@@ -32,7 +31,7 @@ export const DesktopNavigation = ({
               href={href}
               className='hover:text-primary-hover font-medium transition-colors'
             >
-              {t(label.replace('navigation.', ''))}
+              {t(label)}
             </Link>
           </li>
         ))}

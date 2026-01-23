@@ -1,12 +1,12 @@
-export const NAV_LINKS = {
+export const NAVIGATION_LINKS = {
   common: [
-    { label: 'navigation.home', href: '/' },
-    { label: 'navigation.calendar', href: '/calendar' },
-    { label: 'navigation.pets', href: '/pets' },
-    { label: 'navigation.settings', href: '/settings' },
-  ],
-  unauth: [],
-  auth: [],
+    { label: 'home', href: '/' },
+    { label: 'calendar', href: '/calendar' },
+    { label: 'pets', href: '/pets' },
+    { label: 'settings', href: '/settings' },
+  ] as const,
+  unauth: [] as const,
+  auth: [] as const,
 }
 
 /*
@@ -15,7 +15,9 @@ export const NAV_LINKS = {
   @param {boolean} isAuthenticated
   @returns {Array} actual links
 */
-export const getLinks = (isAuthenticated: boolean) =>
-  isAuthenticated
-    ? [...NAV_LINKS.common, ...NAV_LINKS.auth]
-    : [...NAV_LINKS.common, ...NAV_LINKS.unauth]
+export const getLinks = (isAuthenticated: boolean) => {
+  const links = isAuthenticated
+    ? [...NAVIGATION_LINKS.common, ...NAVIGATION_LINKS.auth]
+    : [...NAVIGATION_LINKS.common, ...NAVIGATION_LINKS.unauth]
+  return links
+}

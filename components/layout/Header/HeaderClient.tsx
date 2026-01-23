@@ -3,7 +3,6 @@
 import { getLinks } from '@/constants/navigation'
 import { IUser } from '@/interfaces/user'
 import { useUIStore } from '@/store/use-ui-store'
-import { useTranslations } from 'next-intl'
 
 import { DesktopNavigation } from './DesktopNavMenu'
 import { MobileNavigation } from './MobileNavMenu'
@@ -18,26 +17,18 @@ export const HeaderClient = ({ user }: IHeaderClientProps) => {
   const isAuthenticated = !!user
   const links = getLinks(isAuthenticated)
 
-  const t = useTranslations('navigation')
-
   return (
     <header
       className={
         'fixed top-0 left-0 z-50 flex h-16 w-full flex-col border-b bg-white transition-all md:h-20'
       }
     >
-      <DesktopNavigation
-        user={user}
-        isAuthenticated={isAuthenticated}
-        links={links}
-        t={t}
-      />
+      <DesktopNavigation user={user} isAuthenticated={isAuthenticated} links={links} />
 
       <MobileNavigation
         user={user}
         isAuthenticated={isAuthenticated}
         links={links}
-        t={t}
         isMobileMenuOpen={isMobileMenuOpen}
       />
     </header>
