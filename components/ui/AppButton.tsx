@@ -23,7 +23,7 @@ export const AppButton = ({
   to,
 }: IAppButtonProps) => {
   const baseStyles =
-    'md:h-full px-3 py-3 rounded-lg flex justify-center items-center transition duration-300 gap-1.5'
+    'h-full rounded-lg flex justify-center items-center transition duration-300 gap-1.5'
   const variantStyles = {
     primary:
       'bg-primary hover:bg-primary-hover active:bg-primary-active active:text-primary',
@@ -33,8 +33,12 @@ export const AppButton = ({
       'hover:bg-gray-100 border border-gray-300 active:bg-gray-400 active:text-gray-100 active:border-gray-400',
     icon: '',
   }
+
+  const paddingStyles = variant === 'icon' ? '' : 'p-3'
+
   const buttonStyles = clsx(
     baseStyles,
+    paddingStyles,
     className,
     disabled
       ? 'cursor-not-allowed bg-disabled text-white '

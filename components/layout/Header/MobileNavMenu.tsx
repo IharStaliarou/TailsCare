@@ -1,7 +1,9 @@
+'use client'
+
 import { AuthActionsBlock } from '@/components/AuthActionsBlock'
 import { Logo } from '@/components/Logo/Logo'
 import { getLinks } from '@/constants/navigation'
-import { Link } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/routing'
 import { IUser } from '@/interfaces/user'
 import { useUIStore } from '@/store/use-ui-store'
 import clsx from 'clsx'
@@ -20,6 +22,7 @@ export const MobileNavigation = ({
   links: ReturnType<typeof getLinks>
   isMobileMenuOpen: boolean
 }) => {
+  const pathname = usePathname()
   const { closeMobileMenu } = useUIStore()
   const t = useTranslations('navigation')
 
@@ -34,17 +37,23 @@ export const MobileNavigation = ({
         <Logo closeMobileMenu={closeMobileMenu} />
 
         <ul className='flex flex-col gap-6'>
-          {links.map(({ label, href }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                onClick={closeMobileMenu}
-                className='hover:text-primary-hover font-medium transition-colors'
-              >
-                {t(label)}
-              </Link>
-            </li>
-          ))}
+          {links.map(({ label, href }) => {
+            const isActive = href === pathname
+            return (
+              <li key={href}>
+                <Link
+                  href={href}
+                  onClick={closeMobileMenu}
+                  className={clsx(
+                    'hover:text-primary-hover font-medium transition-colors',
+                    isActive ? 'text-primary' : ''
+                  )}
+                >
+                  {t(label)}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
 
         <AuthActionsBlock

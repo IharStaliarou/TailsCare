@@ -1,9 +1,9 @@
-import { IUser } from '@/interfaces/user'
-import { useTranslations } from 'next-intl'
-
-import 'next-intl/server'
+'use client'
 
 import { Activity } from 'react'
+
+import { IUser } from '@/interfaces/user'
+import { useTranslations } from 'next-intl'
 
 import { AppButton } from './ui/AppButton'
 import { LanguageSwitcher } from './ui/LanguageSwitcher'
@@ -42,7 +42,7 @@ export const AuthActionsBlock = ({
          */}
         <AppButton onClick={() => {}} label={t('signOut')} />
       </Activity>
-      <LanguageSwitcher />
+      <LanguageSwitcher className='h-full' />
     </div>
   )
 }
