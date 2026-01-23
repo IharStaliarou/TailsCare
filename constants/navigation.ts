@@ -1,9 +1,8 @@
 export const NAVIGATION_LINKS = {
   common: [
     { label: 'home', href: '/' },
-    { label: 'calendar', href: '/calendar' },
     { label: 'pets', href: '/pets' },
-    { label: 'settings', href: '/settings' },
+    { label: 'calendar', href: '/calendar' },
   ] as const,
   unauth: [] as const,
   auth: [] as const,

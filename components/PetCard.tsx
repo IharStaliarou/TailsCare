@@ -28,8 +28,8 @@ export const PetCard = async ({ pet }: IPetCardProps) => {
         <AppButton
           to={`/pets/${pet.id}`}
           variant='icon'
-          icon={<EditIcon className='w-6 stroke-2' />}
-          className='w-12 bg-yellow-200'
+          icon={<EditIcon className='w-6 stroke-2 text-white' />}
+          className='w-12 bg-yellow-300 hover:bg-yellow-600 active:bg-yellow-200'
         />
         <AppButton label={t('details')} to={`/pets/${pet.id}`} className='grow' />
       </div>
