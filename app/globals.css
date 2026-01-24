@@ -35,7 +35,7 @@
 
 body {
   color: var(--color-black-main);
-  font-family: var(--font-lexend), sans-serif;
+  font-family: var(--font-nunito), sans-serif;
   font-weight: 400;
   background: var(--color-root-bg);
 }
