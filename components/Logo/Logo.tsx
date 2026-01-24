@@ -2,8 +2,7 @@
 
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
-
-import { LogoIcon } from './LogoIcon'
+import Image from 'next/image'
 
 interface ILogoProps {
   className?: string
@@ -19,7 +18,7 @@ export const Logo = ({ closeMobileMenu, className }: ILogoProps) => {
       className={`hover:text-primary-hover text-primary flex items-center gap-2.5 transition-colors duration-300 ${className}`}
     >
       {/* TODO: Create custom logo */}
-      <LogoIcon className='h-8 w-8' />
+      <Image src='/Logo.svg' alt='logo' width={46} height={46} />
       <span className='text-4xl font-bold'>{t('title')}</span>
     </Link>
   )

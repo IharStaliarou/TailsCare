@@ -44,6 +44,9 @@
   "petsPage": {
     "noPets": "У вас пока еще нет питомцев!"
   },
+  "petDetailsPage": {
+    "title": "Это ваш питомец {petName}"
+  },
   "petTypes": {
     "DOG": "Собака",
     "CAT": "Кошка"

@@ -10,11 +10,12 @@ export interface IUser {
   updatedAt: Date
   pets: IPet[]
 }
-
+export type TGender = 'male' | 'female'
 export interface IPet {
   id: string
   name: string
   type: string
+  gender: TGender
   avatarUrl: string
   createdAt: Date
   updatedAt: Date

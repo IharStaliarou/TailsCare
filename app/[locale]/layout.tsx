@@ -5,12 +5,13 @@ import { routing } from '@/i18n/routing'
 import { TLocale } from '@/i18n/types'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
-import { Lexend } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-const lexend = Lexend({
-  variable: '--font-lexend',
-  subsets: ['latin'],
+const nunito = Nunito({
+  subsets: ['cyrillic', 'latin'],
+  variable: '--font-nunito',
+  weight: ['400', '500', '600', '700', '800', '900'],
 })
 
 export function generateStaticParams() {
@@ -36,10 +37,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${lexend.variable}`}>
+      <body className={`flex h-full flex-col ${nunito.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main className='mt-16 w-full px-4 py-6 md:mt-20 md:px-6 md:py-9.5 2xl:px-17'>
+          <main className='mx-auto mt-16 flex w-full max-w-360 flex-col justify-center px-4 md:mt-20 md:px-6 md:py-9.5 2xl:px-17'>
             {children}
           </main>
         </NextIntlClientProvider>
