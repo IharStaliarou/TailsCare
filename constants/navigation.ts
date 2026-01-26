@@ -1,8 +1,16 @@
+import { BellIcon } from '@/components/icons/BellIcon'
+import { CalendarIcon } from '@/components/icons/CalendarIcon'
+import { EarthIcon } from '@/components/icons/EarthIcon'
+import { HomeIcon } from '@/components/icons/HomeIcon'
+import { NavPlusIcon } from '@/components/icons/NavPlusIcon'
+
 export const NAVIGATION_LINKS = {
   common: [
-    { label: 'home', href: '/' },
-    { label: 'pets', href: '/pets' },
-    { label: 'calendar', href: '/calendar' },
+    { label: 'home', href: '/', icon: EarthIcon },
+    { label: 'pets', href: '/pets', icon: HomeIcon },
+    { label: 'addPet', href: '/pets/add', icon: NavPlusIcon },
+    { label: 'calendar', href: '/calendar', icon: CalendarIcon },
+    { label: 'notifications', href: '/notifications', icon: BellIcon },
   ] as const,
   unauth: [] as const,
   auth: [] as const,

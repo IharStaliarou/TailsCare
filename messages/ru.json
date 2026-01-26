@@ -18,9 +18,10 @@
   },
   "navigation": {
     "home": "Главная",
-    "dashboard": "Панель управления",
-    "calendar": "Календарь",
     "pets": "Мои питомцы",
+    "addPet": "Добавить питомца",
+    "calendar": "Календарь",
+    "notifications": "Уведомления",
     "settings": "Настройки",
     "profile": "Профиль",
     "signIn": "Войти",
