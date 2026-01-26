@@ -7,37 +7,31 @@ import { Link, usePathname } from '@/i18n/routing'
 import { IUser } from '@/interfaces/user'
 import { useUIStore } from '@/store/use-ui-store'
 import clsx from 'clsx'
-import { useTranslations } from 'next-intl'
 
-import { BurgerButton } from './BurgerButton'
+interface IMobileNavMenuProps {
+  user: IUser | null
+  isAuthenticated: boolean
+  links: ReturnType<typeof getLinks>
+}
 
 export const MobileNavigation = ({
   user,
   isAuthenticated,
   links,
-  isMobileMenuOpen,
-}: {
-  user: IUser | null
-  isAuthenticated: boolean
-  links: ReturnType<typeof getLinks>
-  isMobileMenuOpen: boolean
-}) => {
+}: IMobileNavMenuProps) => {
   const pathname = usePathname()
   const { closeMobileMenu } = useUIStore()
-  const t = useTranslations('navigation')
 
   return (
     <>
+      {/*TODO: add mb for mobile menu*/}
       <nav
         className={clsx(
-          'fixed inset-0 z-40 flex h-full flex-col justify-between bg-white p-6 pt-20 transition-transform duration-300 md:hidden',
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          'bg-secondary fixed bottom-0 left-0 z-40 flex h-10 min-w-screen md:hidden'
         )}
       >
-        <Logo closeMobileMenu={closeMobileMenu} />
-
-        <ul className='flex flex-col gap-6'>
-          {links.map(({ label, href }) => {
+        <ul className='flex w-full items-center justify-around'>
+          {links.map(({ href, icon: IconComponent }) => {
             const isActive = href === pathname
             return (
               <li key={href}>
@@ -46,28 +40,16 @@ export const MobileNavigation = ({
                   onClick={closeMobileMenu}
                   className={clsx(
                     'hover:text-primary-hover font-medium transition-colors',
-                    isActive ? 'text-primary' : ''
+                    isActive ? 'text-primary-active' : ''
                   )}
                 >
-                  {t(label)}
+                  <IconComponent className='h-6 w-6' />
                 </Link>
               </li>
             )
           })}
         </ul>
-
-        <AuthActionsBlock
-          user={user}
-          isAuthenticated={isAuthenticated}
-          closeMobileMenu={closeMobileMenu}
-        />
       </nav>
-
-      <BurgerButton
-        className='absolute top-3 right-5 z-50 md:hidden'
-        isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={useUIStore.getState().toggleMobileMenu}
-      />
     </>
   )
 }

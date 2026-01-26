@@ -18,9 +18,10 @@
   },
   "navigation": {
     "home": "Home",
-    "dashboard": "Dashboard",
-    "calendar": "Calendar",
     "pets": "My Pets",
+    "addPet": "Add Pet",
+    "calendar": "Calendar",
+    "notifications": "Notifications",
     "settings": "Settings",
     "profile": "Profile",
     "signIn": "Sign In",
