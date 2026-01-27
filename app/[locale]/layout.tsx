@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import { Header } from '@/components/layout/Header/Header'
+import { MobileSidebar } from '@/components/layout/Mobile/MobileSidebar'
 import { routing } from '@/i18n/routing'
 import { TLocale } from '@/i18n/types'
 import { NextIntlClientProvider } from 'next-intl'
@@ -40,7 +41,8 @@ export default async function LocaleLayout({
       <body className={`flex h-full flex-col ${nunito.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main className='mx-auto mt-16 flex w-full max-w-360 flex-col justify-center px-4 md:mt-20 md:px-6 md:py-9.5 2xl:px-17'>
+          <main className='mx-auto mt-20 mb-14 flex w-full max-w-360 flex-col justify-center px-4 md:mb-0 md:px-6 md:py-9.5 2xl:px-17'>
+            <MobileSidebar />
             {children}
           </main>
         </NextIntlClientProvider>

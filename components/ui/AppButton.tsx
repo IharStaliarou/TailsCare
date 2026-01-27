@@ -12,6 +12,7 @@ export interface IAppButtonProps extends HTMLAttributes<HTMLButtonElement> {
   variant?: TVariant
   disabled?: boolean
   to?: string
+  onClick?: () => void
 }
 export const AppButton = ({
   children,
@@ -21,9 +22,9 @@ export const AppButton = ({
   variant = 'primary',
   disabled,
   to,
+  onClick,
 }: IAppButtonProps) => {
-  const baseStyles =
-    'h-full rounded-lg flex justify-center items-center transition duration-300 gap-1.5'
+  const baseStyles = `rounded-lg flex justify-center items-center transition duration-300 gap-1.5 ${className?.includes('h-') ? '' : 'h-full'}`
   const variantStyles = {
     primary:
       'bg-primary hover:bg-primary-hover active:bg-primary-active active:text-primary',
@@ -56,7 +57,7 @@ export const AppButton = ({
   }
 
   return (
-    <button className={`${buttonStyles} ${className}`}>
+    <button onClick={onClick} className={`${buttonStyles} ${className}`}>
       {icon} {label} {children}
     </button>
   )

@@ -20,7 +20,7 @@ export const PetsList = async ({ pets }: IPetsListProps) => {
   }
 
   return (
-    <ul className='flex flex-wrap gap-5'>
+    <ul className='flex flex-col flex-wrap items-center gap-5 md:flex-row'>
       {pets.map((pet: IPet) => (
         <PetCard key={pet.id} pet={pet} />
       ))}
