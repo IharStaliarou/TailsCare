@@ -14,12 +14,12 @@ export const PetCard = async ({ pet }: IPetCardProps) => {
   const t = await getTranslations('common')
   const { name, avatarUrl } = pet
   return (
-    <li className='flex w-80 flex-col items-center gap-2.5 rounded-lg p-4 shadow-xl'>
+    <li className='flex w-80 flex-col gap-2.5 rounded-lg p-4 shadow-xl'>
       <div className='relative h-75 w-full'>
         <Image src={avatarUrl} alt={name} fill className='rounded-md object-cover' />
       </div>
-      <h3 className='self-start text-xl'>{name}</h3>
-      <div className='flex w-full justify-start gap-2.5'>
+      <h3 className='text-xl'>{name}</h3>
+      <div className='flex h-12 w-full gap-2.5'>
         <AppButton
           variant='icon'
           icon={<TrashIcon className='h-6 w-6 stroke-2 text-white' />}
