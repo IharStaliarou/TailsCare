@@ -1,7 +1,5 @@
 'use client'
 
-import { AuthActionsBlock } from '@/components/AuthActionsBlock'
-import { Logo } from '@/components/Logo/Logo'
 import { getLinks } from '@/constants/navigation'
 import { Link, usePathname } from '@/i18n/routing'
 import { IUser } from '@/interfaces/user'
@@ -14,11 +12,7 @@ interface IMobileNavMenuProps {
   links: ReturnType<typeof getLinks>
 }
 
-export const MobileNavigation = ({
-  user,
-  isAuthenticated,
-  links,
-}: IMobileNavMenuProps) => {
+export const MobileNavigation = ({ links }: IMobileNavMenuProps) => {
   const pathname = usePathname()
   const { closeMobileMenu } = useUIStore()
 

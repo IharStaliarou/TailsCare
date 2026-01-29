@@ -12,7 +12,7 @@ export default async function HomePage() {
         <Image src='/Promo1.svg' alt='logo' width={500} height={300} />
       </div>
       <h1 className='text-3xl'>{t('title')}</h1>
-      <p className='mt-5'>{t('description')}</p>
+      <p className='mt-5 text-center'>{t('description')}</p>
     </section>
   )
 }
