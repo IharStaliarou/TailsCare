@@ -37,5 +37,6 @@ body {
   color: var(--color-black-main);
   font-family: var(--font-nunito), sans-serif;
   font-weight: 400;
-  background: var(--color-root-bg);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
 }
