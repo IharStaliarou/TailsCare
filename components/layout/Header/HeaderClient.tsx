@@ -18,7 +18,7 @@ export const HeaderClient = ({ user }: IHeaderClientProps) => {
   return (
     <header
       className={
-        'fixed top-0 left-0 z-50 h-16 w-full items-center border-b border-b-gray-400 bg-white px-4 shadow-sm transition-all md:h-20 md:px-0'
+        'fixed top-0 left-0 z-50 h-16 w-full items-center border-b border-b-gray-400 bg-gray-50 px-4 shadow-sm transition-all md:h-20 md:px-0'
       }
     >
       <DesktopNavigation user={user} isAuthenticated={isAuthenticated} links={links} />
