@@ -6,7 +6,7 @@ export default async function HomePage() {
   return (
     <section
       id='home'
-      className='flex flex-col items-center justify-center font-sans md:mt-5'
+      className='flex min-h-[calc(100vh-9.75rem)] flex-col items-center justify-center font-sans'
     >
       <div className='overflow-hidden rounded-full'>
         <Image src='/Promo1.svg' alt='logo' width={500} height={300} />

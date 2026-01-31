@@ -21,10 +21,10 @@ export const MobileNavigation = ({ links }: IMobileNavMenuProps) => {
       {/*TODO: add mb for mobile menu*/}
       <nav
         className={clsx(
-          'bg-secondary fixed bottom-0 left-0 z-40 flex h-10 min-w-screen md:hidden'
+          'bg-secondary fixed bottom-0 left-0 z-40 flex h-15 min-w-screen md:hidden'
         )}
       >
-        <ul className='flex w-full items-center justify-around'>
+        <ul className='flex w-full justify-around pt-2.5'>
           {links.map(({ href, icon: IconComponent }) => {
             const isActive = href === pathname
             return (

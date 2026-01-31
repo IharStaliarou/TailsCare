@@ -1,9 +1,12 @@
 'use client'
 
+import { useRef } from 'react'
+
 import { AuthActionsBlock } from '@/components/AuthActionsBlock'
 import { PlusIcon } from '@/components/icons/PlusIcon'
 import { AppButton } from '@/components/ui/AppButton'
 import { Divider } from '@/components/ui/Divider'
+import { useClickOutside } from '@/hooks/useClickOutside'
 import { Link } from '@/i18n/routing'
 import { MOCK_USER } from '@/interfaces/user'
 import { useUIStore } from '@/store/use-ui-store'
@@ -12,14 +15,17 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 export const MobileSidebar = () => {
+  const sidebarRef = useRef<HTMLElement>(null)
   const { isMobileMenuOpen, closeMobileMenu } = useUIStore()
+  useClickOutside(sidebarRef, closeMobileMenu)
   const { name, avatarUrl, pets } = MOCK_USER
   const t = useTranslations('navigation')
   return (
     <aside
       id='mobile-sidebar'
+      ref={sidebarRef}
       className={clsx(
-        `fixed inset-0 z-100 flex h-full w-2/3 transform flex-col justify-between bg-white p-4 transition-transform duration-300 md:hidden`,
+        `fixed inset-0 z-100 flex h-full w-2/3 transform flex-col justify-between bg-white px-4 py-8 transition-transform duration-300 md:hidden`,
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       )}
       aria-hidden={!isMobileMenuOpen}
@@ -28,7 +34,7 @@ export const MobileSidebar = () => {
         variant='icon'
         onClick={closeMobileMenu}
         icon={<PlusIcon className='rotate-45' />}
-        className='absolute top-5 right-2 h-8 w-8'
+        className='absolute top-9 right-2 h-8 w-8'
       />
       <div>
         <Link href={'/profile'} className='flex flex-col gap-2.5'>
