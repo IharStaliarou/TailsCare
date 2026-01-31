@@ -14,7 +14,8 @@
     "required": "Обязательное поле",
     "back": "Назад",
     "continue": "Продолжить",
-    "details": "Детали"
+    "details": "Детали",
+    "kg": "кг"
   },
   "navigation": {
     "home": "Главная",

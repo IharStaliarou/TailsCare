@@ -11,13 +11,13 @@ export const MobileTopBar = () => {
     <nav className='flex h-full w-full justify-between'>
       <AppButton
         variant='icon'
-        icon={<UserIcon className='h-10 w-10 stroke-2' />}
+        icon={<UserIcon className='h-10 w-10' />}
         className='md:hidden'
         onClick={openMobileMenu}
       />
       <AppButton
         variant='icon'
-        icon={<HelpIcon className='h-10 w-10 stroke-2' />}
+        icon={<HelpIcon className='str h-10 w-10' />}
         className='md:hidden'
         to='/faq'
       />

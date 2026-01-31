@@ -14,7 +14,8 @@
     "required": "Required field",
     "back": "Back",
     "continue": "Continue",
-    "details": "Details"
+    "details": "Details",
+    "kg": "kg"
   },
   "navigation": {
     "home": "Home",
