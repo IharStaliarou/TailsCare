@@ -1,7 +1,7 @@
-import { PlusIcon } from '@/components/icons/PlusIcon'
-import { PetsList } from '@/components/PetsList'
-import { AppButton } from '@/components/ui/AppButton'
-import { IPet } from '@/interfaces/user'
+import { IPet } from '@/entities/pet'
+import { AppButton } from '@/shared/ui'
+import { PlusIcon } from '@/shared/ui/icons'
+import { PetsList } from '@/widgets/pets-list'
 import { getTranslations } from 'next-intl/server'
 
 // TODO: delete when db will be ready

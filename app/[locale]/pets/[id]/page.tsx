@@ -1,8 +1,6 @@
-import { IPet } from '@/interfaces/user'
 import { getTranslations } from 'next-intl/server'
 
 interface IPetDetailsPageProps {
-  pet: IPet
   params: Promise<{ id: string; locale: string }>
 }
 
@@ -16,8 +14,9 @@ const MAX = {
   createdAt: new Date(),
   updatedAt: new Date(),
 }
-export default async function PetDetailsPage({ pet, params }: IPetDetailsPageProps) {
-  const { locale } = await params
+
+export default async function PetDetailsPage({ params }: IPetDetailsPageProps) {
+  await params
   const t = await getTranslations('petDetailsPage')
   const { name: petName } = MAX
 

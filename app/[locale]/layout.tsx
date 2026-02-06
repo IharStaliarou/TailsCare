@@ -1,9 +1,8 @@
 import { ReactNode } from 'react'
 
-import { Header } from '@/components/layout/Header/Header'
-import { MobileSidebar } from '@/components/layout/Mobile/MobileSidebar'
-import { routing } from '@/i18n/routing'
-import { TLocale } from '@/i18n/types'
+import { routing, TLocale } from '@/shared/config/i18n'
+import { Header } from '@/widgets/header'
+import { MobileSidebar } from '@/widgets/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { Nunito } from 'next/font/google'

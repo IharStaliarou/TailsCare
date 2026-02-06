@@ -1,0 +1,13 @@
+export { BellIcon } from './BellIcon'
+export { CalendarIcon } from './CalendarIcon'
+export { DropdownArrowIcon } from './DropdownArrowIcon'
+export { EarthIcon } from './EarthIcon'
+export { EditIcon } from './EditIcon'
+export { HelpIcon } from './HelpIcon'
+export { HomeIcon } from './HomeIcon'
+export { NavPlusIcon } from './NavPlusIcon'
+export { PlusIcon } from './PlusIcon'
+export { TrashIcon } from './TrashIcon'
+export { UserIcon } from './UserIcon'
+
+export type { IIconsProps, TIconName } from './types'
