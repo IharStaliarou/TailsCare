@@ -1,0 +1,139 @@
+{
+  "common": {
+    "title": "TailsCare",
+    "description": "Monitoring app for cats and dogs",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "open": "Open",
+    "close": "Close",
+    "edit": "Edit",
+    "add": "Add",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "required": "Required field",
+    "back": "Back",
+    "continue": "Continue",
+    "details": "Details",
+    "kg": "kg"
+  },
+  "navigation": {
+    "home": "Home",
+    "pets": "My Pets",
+    "addPet": "Add Pet",
+    "calendar": "Calendar",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "profile": "Profile",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out"
+  },
+  "forms": {
+    "pet": {
+      "name": {
+        "label": "Pet Name",
+        "placeholder": "Rex"
+      },
+      "breed": {
+        "label": "Breed",
+        "placeholder": "Golden Retriever"
+      },
+      "birthday": {
+        "label": "Birthday",
+        "placeholder": "MM.DD.YYYY"
+      },
+      "currentWeight": {
+        "label": "Current Weight (kg)",
+        "placeholder": "10"
+      },
+      "targetWeight": {
+        "label": "Target Weight (kg)",
+        "placeholder": "10"
+      },
+      "type": {
+        "label": "Pet Type",
+        "options": {
+          "cat": "Cat",
+          "dog": "Dog"
+        }
+      },
+      "gender": {
+        "label": "Gender",
+        "options": {
+          "male": "Male",
+          "female": "Female"
+        }
+      },
+      "activity": {
+        "label": "Activity level",
+        "options": {
+          "low": {
+            "label": "Low",
+            "description": "Mostly resting"
+          },
+          "moderate": {
+            "label": "Moderate",
+            "description": "Daily walks and play"
+          },
+          "high": {
+            "label": "High",
+            "description": "Very active"
+          }
+        }
+      }
+    },
+    "petName": "Pet Name",
+    "petType": "Pet Type",
+    "breed": "Breed",
+    "gender": "Gender",
+    "birthday": "Birthday",
+    "weight": "Weight (kg)",
+    "targetWeight": "Target Weight (kg)"
+  },
+  "validations": {
+    "common": {
+      "notEmpty": "This field is required"
+    },
+    "pet": {
+      "name": {
+        "min": "Pet name must be at least 2 characters long",
+        "max": "Pet name must be at most 50 characters long"
+      },
+      "avatar": {
+        "size": "File size must be less than {size} MB",
+        "formats": "Format is not allowed. Allowed formats: {formats}"
+      },
+      "birthday": {
+        "notFuture": "Birthday cannot be in the future"
+      },
+      "currentWeight": "Please enter  weight"
+    }
+  },
+  "addPetPage": {
+    "label": "Add Pet",
+    "form": {
+      "label": "Pet details"
+    }
+  },
+  "petsPage": {
+    "noPets": "You don't have pets yet!"
+  },
+  "petDetailsPage": {
+    "title": "This is your pet {petName}"
+  },
+  "petTypes": {
+    "DOG": "Dog",
+    "CAT": "Cat"
+  },
+  "genders": {
+    "MALE": "Male",
+    "FEMALE": "Female"
+  },
+  "ariaLabels": {
+    "toggleBurger": "Toggle mobile menu"
+  },
+  "error": {
+    "somethingError": "Something went wrong! Please try again later."
+  }
+}

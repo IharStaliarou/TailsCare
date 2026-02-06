@@ -28,6 +28,12 @@ enum Gender {
   FEMALE
 }
 
+enum ActivityLevel {
+  LOW
+  MODERATE
+  HIGH
+}
+
 model Pet {
   id        String   @id @default(uuid())
   name      String
@@ -37,7 +43,10 @@ model Pet {
   birthday  DateTime
   avatarUrl String?
 
-  targetWeight Float? @map("target_weight")
+  currentWeight Float? @map("current_weight")
+  targetWeight  Float? @map("target_weight")
+
+  activityLevel ActivityLevel
 
   ownerId String @map("owner_id")
   owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)

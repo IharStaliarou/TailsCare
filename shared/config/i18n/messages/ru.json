@@ -1,0 +1,139 @@
+{
+  "common": {
+    "title": "TailsCare",
+    "description": "Мониторинг приложение для кошек и собак",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "open": "Открыть",
+    "close": "Закрыть",
+    "edit": "Изменить",
+    "add": "Добавить",
+    "loading": "Загрузка...",
+    "error": "Что-то пошло не так",
+    "required": "Обязательное поле",
+    "back": "Назад",
+    "continue": "Продолжить",
+    "details": "Детали",
+    "kg": "кг"
+  },
+  "navigation": {
+    "home": "Главная",
+    "pets": "Питомцы",
+    "addPet": "Добавить питомца",
+    "calendar": "Календарь",
+    "notifications": "Уведомления",
+    "settings": "Настройки",
+    "profile": "Профиль",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "signOut": "Выйти"
+  },
+  "forms": {
+    "pet": {
+      "name": {
+        "label": "Кличка питомца",
+        "placeholder": "Рекс"
+      },
+      "breed": {
+        "label": "Порода",
+        "placeholder": "Золотистый ретривер"
+      },
+      "birthday": {
+        "label": "Дата рождения",
+        "placeholder": "ДД.ММ.ГГГГ"
+      },
+      "currentWeight": {
+        "label": "Вес (кг)",
+        "placeholder": "10"
+      },
+      "targetWeight": {
+        "label": "Целевой вес (кг)",
+        "placeholder": "10"
+      },
+      "type": {
+        "label": "Вид животного",
+        "options": {
+          "cat": "Кошка",
+          "dog": "Собака"
+        }
+      },
+      "gender": {
+        "label": "Пол",
+        "options": {
+          "male": "Самец",
+          "female": "Самка"
+        }
+      },
+      "activity": {
+        "label": "Активность",
+        "options": {
+          "low": {
+            "label": "Низкая",
+            "description": "В основном отдых"
+          },
+          "moderate": {
+            "label": "Средняя",
+            "description": "Ежедневные прогулки и игры"
+          },
+          "high": {
+            "label": "Высокая",
+            "description": "Очень активный"
+          }
+        }
+      }
+    },
+    "petName": "Кличка питомца",
+    "petType": "Вид животного",
+    "breed": "Порода",
+    "gender": "Пол",
+    "birthday": "Дата рождения",
+    "weight": "Вес (кг)",
+    "targetWeight": "Целевой вес (кг)"
+  },
+  "validations": {
+    "common": {
+      "notEmpty": "Это поле обязательно"
+    },
+    "pet": {
+      "name": {
+        "min": "Кличка питомца должна быть не менее 2 символов",
+        "max": "Кличка питомца должна быть не более 50 символов"
+      },
+      "avatar": {
+        "size": "Размер файла не должен превышать {size} МБ",
+        "formats": "Неподдерживаемый формат файла. Допустимые форматы: {formats}"
+      },
+      "birthday": {
+        "notFuture": "Дата рождения не может быть в будущем"
+      },
+      "currentWeight": "Введите текущий вес"
+    }
+  },
+  "addPetPage": {
+    "label": "Добавить питомца",
+    "form": {
+      "label": "Данные питомца"
+    }
+  },
+  "petsPage": {
+    "noPets": "У вас пока еще нет питомцев!"
+  },
+  "petDetailsPage": {
+    "title": "Это ваш питомец {petName}"
+  },
+  "petTypes": {
+    "DOG": "Собака",
+    "CAT": "Кошка"
+  },
+  "genders": {
+    "MALE": "Самец",
+    "FEMALE": "Самка"
+  },
+  "ariaLabels": {
+    "toggleBurger": "Переключить мобильное меню"
+  },
+  "error": {
+    "somethingError": "Что-то пошло не так! Попробуйте еще раз позже."
+  }
+}
