@@ -31,6 +31,10 @@
   },
   "forms": {
     "pet": {
+      "avatar": {
+        "label": "Pet Avatar",
+        "placeholder": "Upload image of your new pet. Allowed formats: {formats}"
+      },
       "name": {
         "label": "Pet Name",
         "placeholder": "Rex"

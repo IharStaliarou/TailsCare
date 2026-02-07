@@ -2,11 +2,7 @@ import { PetActivityLevelEnum, PetGenderEnum, PetTypeEnum } from '@/entities/pet
 import { TDictionary } from '@/shared/config/i18n'
 import * as z from 'zod'
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024
-const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
-const formatsString = ALLOWED_FILE_TYPES.map((t) => t.split('/')[1].toUpperCase()).join(
-  ', '
-)
+import { ALLOWED_FILE_TYPES, formatsString, MAX_FILE_SIZE } from './pet-form'
 
 const avatarSchema = (dictionary: TDictionary) =>
   z

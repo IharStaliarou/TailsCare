@@ -10,6 +10,8 @@ import {
 import clsx from 'clsx'
 import { useLocale } from 'next-intl'
 
+import { useUIStore } from '../model/use-ui-store'
+
 interface ILanguageSwitcherProps {
   className?: string
 }
@@ -18,9 +20,11 @@ export const LanguageSwitcher = ({ className }: ILanguageSwitcherProps) => {
   const locale = useLocale() as TLocale
   const router = useRouter()
   const pathname = usePathname()
+  const { closeMobileMenu } = useUIStore()
 
   const handleLanguageChange = (newLocale: TLocale) => {
     router.replace(pathname, { locale: newLocale })
+    closeMobileMenu()
   }
   return (
     <div className={`flex gap-1 rounded-lg border-gray-600 bg-gray-600 p-1 ${className}`}>

@@ -1,4 +1,5 @@
 import { IPet } from '@/entities/pet'
+import { ROUTES } from '@/shared/config/routes'
 import { AppButton } from '@/shared/ui'
 import { PlusIcon } from '@/shared/ui/icons'
 import { PetsList } from '@/widgets/pets-list'
@@ -34,6 +35,7 @@ export default async function PetsPage() {
   return (
     <section className='flex flex-col gap-5'>
       <AppButton
+        to={ROUTES.addPet}
         label={t('add')}
         icon={<PlusIcon className='w-4 stroke-2' />}
         className='max-w-fit self-end'

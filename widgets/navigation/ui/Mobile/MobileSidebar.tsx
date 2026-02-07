@@ -36,7 +36,11 @@ export const MobileSidebar = () => {
         className='absolute top-9 right-2 h-8 w-8'
       />
       <div>
-        <Link href={'/profile'} className='flex flex-col gap-2.5'>
+        <Link
+          href={'/profile'}
+          onClick={closeMobileMenu}
+          className='flex flex-col gap-2.5'
+        >
           <div className='h-10 w-10 rounded-full border border-gray-600 p-0.75'>
             {avatarUrl && <Image src={avatarUrl} alt={name} fill />}
             {!avatarUrl && (
@@ -53,7 +57,7 @@ export const MobileSidebar = () => {
       <ul className='flex h-full flex-col gap-3 py-4'>
         <li>
           <Link
-            href={'/user/settings'}
+            href={'/profile/settings'}
             onClick={closeMobileMenu}
             className='text-md font-semibold'
           >
