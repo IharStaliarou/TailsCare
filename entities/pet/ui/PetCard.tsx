@@ -25,7 +25,7 @@ export const PetCard = async ({ pet }: IPetCardProps) => {
         </div>
         <div className='flex flex-col justify-center'>
           <h3 className='text-xl font-bold'>{name}</h3>
-          <div className='flex justify-between'>
+          <div className='flex gap-2.5 md:justify-between md:gap-0'>
             <p className='font-semibold'>{breed}</p>
             <span className='font-bold'>{`${weight} ${t('kg')}`}</span>
           </div>

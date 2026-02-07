@@ -1,5 +1,6 @@
 'use client'
 
+import { formatsString } from '@/entities/pet/model/pet-form'
 import { usePetForm, usePetOptions } from '@/features/add-pet'
 import { TDictionary } from '@/shared/config/i18n'
 import { AppButton, ImageUpload, Input } from '@/shared/ui'
@@ -32,9 +33,11 @@ export const AddPetForm = () => {
   return (
     <form onSubmit={handleSubmit} className='grid gap-5 rounded-2xl pb-5 md:grid-cols-2'>
       <ImageUpload
-        onChange={(file) => handleChange('avatar', file)}
+        label={tForm('avatar.label')}
+        placeholder={tForm('avatar.placeholder', { formats: formatsString })}
         error={errors.avatar}
         value={avatar as string}
+        onChange={(file) => handleChange('avatar', file)}
       />
       <div>
         <div className='grid grid-cols-1 gap-4'>
@@ -46,6 +49,7 @@ export const AddPetForm = () => {
             placeholder={tForm('name.placeholder')}
             onChange={(e) => handleChange(FIELDS_CONFIG.name.id, e.target.value)}
             error={errors.name}
+            required={FIELDS_CONFIG.name.isRequired}
           />
 
           <RadioButtonGroup
@@ -55,6 +59,7 @@ export const AddPetForm = () => {
             selectedValue={type}
             onChange={(val) => handleChange(FIELDS_CONFIG.type.id, val)}
             error={errors.type}
+            required={FIELDS_CONFIG.type.isRequired}
           />
 
           <RadioButtonGroup
@@ -64,6 +69,7 @@ export const AddPetForm = () => {
             selectedValue={gender}
             onChange={(val) => handleChange(FIELDS_CONFIG.gender.id, val)}
             error={errors.gender}
+            required={FIELDS_CONFIG.gender.isRequired}
           />
 
           <Input
@@ -74,8 +80,10 @@ export const AddPetForm = () => {
             placeholder={tForm('breed.placeholder')}
             onChange={(e) => handleChange(FIELDS_CONFIG.breed.id, e.target.value)}
             error={errors.breed}
+            required={FIELDS_CONFIG.breed.isRequired}
           />
 
+          {/* TODO: remove default placeholder browser mask */}
           <Input
             id={FIELDS_CONFIG.birthday.id}
             value={birthday}
@@ -84,6 +92,7 @@ export const AddPetForm = () => {
             placeholder={tForm('birthday.placeholder')}
             onChange={(e) => handleChange(FIELDS_CONFIG.birthday.id, e.target.value)}
             error={errors.birthday}
+            required={FIELDS_CONFIG.birthday.isRequired}
           />
 
           <RadioButtonGroup
@@ -93,6 +102,7 @@ export const AddPetForm = () => {
             selectedValue={activityLevel}
             onChange={(val) => handleChange(FIELDS_CONFIG.activityLevel.id, val)}
             error={errors.activityLevel}
+            required={FIELDS_CONFIG.activityLevel.isRequired}
           />
 
           <Input
@@ -103,6 +113,7 @@ export const AddPetForm = () => {
             placeholder={tForm('currentWeight.placeholder')}
             onChange={(e) => handleChange(FIELDS_CONFIG.currentWeight.id, e.target.value)}
             error={errors.currentWeight}
+            required={FIELDS_CONFIG.currentWeight.isRequired}
           />
 
           <Input
@@ -113,6 +124,7 @@ export const AddPetForm = () => {
             placeholder={tForm('targetWeight.placeholder')}
             onChange={(e) => handleChange(FIELDS_CONFIG.targetWeight.id, e.target.value)}
             error={errors.targetWeight}
+            required={FIELDS_CONFIG.targetWeight.isRequired}
           />
         </div>
 

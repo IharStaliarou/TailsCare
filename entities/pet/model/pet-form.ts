@@ -17,3 +17,9 @@ export enum PetActivityLevelEnum {
 export const TYPE_VALUES = Object.values(PetTypeEnum)
 export const GENDER_VALUES = Object.values(PetGenderEnum)
 export const ACTIVITY_VALUES = Object.values(PetActivityLevelEnum)
+
+export const MAX_FILE_SIZE = 5 * 1024 * 1024
+export const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
+export const formatsString = ALLOWED_FILE_TYPES.map((t) =>
+  t.split('/')[1].toUpperCase()
+).join(', ')

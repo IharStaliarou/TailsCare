@@ -5,13 +5,27 @@ import { ChangeEvent, useRef, useState } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 
+import { AppButton } from './AppButton'
+import { PlusIcon } from './icons'
+import { CameraIcon } from './icons/CameraIcon'
+
 interface IImageUploadProps {
+  label: string
+  placeholder?: string
   value?: string | null
   error?: string
+  required?: boolean
   onChange: (file: File | null) => void
 }
 
-export function ImageUpload({ onChange, value, error }: IImageUploadProps) {
+export function ImageUpload({
+  label,
+  placeholder,
+  required = false,
+  onChange,
+  value,
+  error,
+}: IImageUploadProps) {
   const [preview, setPreview] = useState<string | null>(value || null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -34,43 +48,57 @@ export function ImageUpload({ onChange, value, error }: IImageUploadProps) {
   }
 
   return (
-    <div className='flex flex-col items-center gap-4'>
+    <div
+      className={clsx(`flex flex-col items-center gap-1.5`, !preview && 'md:pb-13.75')}
+    >
       <div
         onClick={() => fileInputRef.current?.click()}
         className={clsx(
           'relative flex h-80 w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-all md:h-full',
-          preview ? 'border-none shadow-md' : 'hover:border-secondary border-gray-600',
+          preview
+            ? 'mb-2.5 border-none shadow-md'
+            : 'hover:border-secondary border-gray-600',
           error && 'border-red-500'
         )}
       >
         {preview ? (
           <Image src={preview} alt='Preview' fill className='object-cover' />
         ) : (
-          <div className='flex flex-col items-center'>
-            icon camera
-            <span className='mt-1 text-[10px] font-medium uppercase'>Add Photo</span>
+          <div className='flex w-full flex-col items-center'>
+            <h3 className='text-sm font-bold'>
+              {label} {required && <span className='text-red-500'> *</span>}
+            </h3>
+            <CameraIcon className='h-25 w-25' />
+            <p className='mt-1 w-1/2 text-center text-xs font-semibold uppercase'>
+              {placeholder}
+            </p>
           </div>
         )}
+        <input
+          ref={fileInputRef}
+          type='file'
+          accept='image/*'
+          className='hidden'
+          onChange={handleFileChange}
+        />
       </div>
 
-      {preview && (
-        <button
-          type='button'
-          onClick={handleRemoveImage}
-          className='flex items-center gap-1 text-xs font-bold text-red-500 hover:text-red-400'
-        >
-          icon cross Remove
-        </button>
-      )}
-
-      <input
-        ref={fileInputRef}
-        type='file'
-        accept='image/*'
-        className='hidden'
-        onChange={handleFileChange}
-      />
-      {error && <span className='text-xs text-red-500'>{error}</span>}
+      <div
+        className={clsx(
+          'flex items-center gap-5 self-start md:block',
+          !preview && 'hidden'
+        )}
+      >
+        {preview && (
+          <AppButton
+            variant='outline'
+            className={'h-11.25'}
+            onClick={handleRemoveImage}
+            icon={<PlusIcon className='h-full w-full rotate-45 text-red-500' />}
+          />
+        )}
+        {error && <span className='text-sm text-red-500'>{error}</span>}
+      </div>
     </div>
   )
 }

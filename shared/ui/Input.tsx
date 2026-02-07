@@ -24,6 +24,7 @@ export const Input = ({
   className,
   containerClassName,
   placeholder,
+  required = false,
   id,
   ...props
 }: IInputProps) => {
@@ -50,6 +51,7 @@ export const Input = ({
       {label && (
         <label htmlFor={id} className='text-sm font-medium'>
           {label}
+          {required && <span className='text-red-500'> *</span>}
         </label>
       )}
 

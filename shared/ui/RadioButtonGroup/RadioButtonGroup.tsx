@@ -11,6 +11,7 @@ interface IOption<T extends string> {
 interface IRadioButtonGroupProps<T extends string> {
   label: string
   name: string
+  required?: boolean
   options: IOption<T>[]
   selectedValue?: T
   error?: string
@@ -23,6 +24,7 @@ export function RadioButtonGroup<T extends string>({
   options,
   selectedValue,
   onChange,
+  required = false,
   error,
 }: IRadioButtonGroupProps<T>) {
   const buttons = options.map((option) => {
@@ -38,14 +40,17 @@ export function RadioButtonGroup<T extends string>({
           className={getRadioButtonClasses(isChecked)}
         />
         <span className='leading-sm justify-start text-sm'>
-          {option.label} {option.description && `(${option.description})`}
+          {option.label}
+          {option.description && `(${option.description})`}
         </span>
       </label>
     )
   })
   return (
     <div className='w-full self-stretch'>
-      <p className='leading-sm mb-2.5 w-full text-base'>{label}</p>
+      <p className='leading-sm mb-2.5 w-full text-base'>
+        {label} {required && <span className='text-red-500'> *</span>}
+      </p>
       <div className={'inline-flex flex-col gap-3'}>{buttons}</div>
       {error && <p className='pt-1 text-xs text-red-500'>{error}</p>}
     </div>
