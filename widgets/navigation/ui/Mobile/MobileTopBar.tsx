@@ -5,14 +5,14 @@ import { AppButton } from '@/shared/ui'
 import { HelpIcon, UserIcon } from '@/shared/ui/icons'
 
 export const MobileTopBar = () => {
-  const { openMobileMenu } = useUIStore()
+  const { openMobileSidebar } = useUIStore()
   return (
     <nav className='flex h-full w-full justify-between'>
       <AppButton
         variant='icon'
         icon={<UserIcon className='h-10 w-10' />}
         className='md:hidden'
-        onClick={openMobileMenu}
+        onClick={openMobileSidebar}
       />
       <AppButton
         variant='icon'

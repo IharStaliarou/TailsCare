@@ -14,7 +14,7 @@ interface IMobileNavMenuProps {
 
 export const MobileNavigation = ({ links }: IMobileNavMenuProps) => {
   const pathname = usePathname()
-  const { closeMobileMenu } = useUIStore()
+  const { closeMobileSidebar } = useUIStore()
 
   return (
     <>
@@ -31,7 +31,7 @@ export const MobileNavigation = ({ links }: IMobileNavMenuProps) => {
               <li key={href}>
                 <Link
                   href={href}
-                  onClick={closeMobileMenu}
+                  onClick={closeMobileSidebar}
                   className={clsx(
                     'hover:text-primary-hover font-medium transition-colors',
                     isActive ? 'text-primary-active' : ''

@@ -1,13 +1,24 @@
 import { create } from 'zustand'
 
 interface IUIState {
-  isMobileMenuOpen: boolean
-  openMobileMenu: () => void
-  closeMobileMenu: () => void
+  isMobileSidebarOpen: boolean
+  openMobileSidebar: () => void
+  closeMobileSidebar: () => void
+  isDesktopActionsMenuOpen: boolean
+  toggleDesktopActionsMenu: () => void
+  openDesktopActionsMenu: () => void
+  closeDesktopActionsMenu: () => void
 }
 
 export const useUIStore = create<IUIState>((set) => ({
-  isMobileMenuOpen: false,
-  openMobileMenu: () => set({ isMobileMenuOpen: true }),
-  closeMobileMenu: () => set({ isMobileMenuOpen: false }),
+  isMobileSidebarOpen: false,
+  openMobileSidebar: () => set({ isMobileSidebarOpen: true }),
+  closeMobileSidebar: () => set({ isMobileSidebarOpen: false }),
+  isDesktopActionsMenuOpen: false,
+  toggleDesktopActionsMenu: () =>
+    set((state) => ({
+      isDesktopActionsMenuOpen: state.isDesktopActionsMenuOpen ? false : true,
+    })),
+  openDesktopActionsMenu: () => set({ isDesktopActionsMenuOpen: true }),
+  closeDesktopActionsMenu: () => set({ isDesktopActionsMenuOpen: false }),
 }))
