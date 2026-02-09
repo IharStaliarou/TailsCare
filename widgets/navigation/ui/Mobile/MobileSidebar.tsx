@@ -15,8 +15,8 @@ import Image from 'next/image'
 
 export const MobileSidebar = () => {
   const sidebarRef = useRef<HTMLElement>(null)
-  const { isMobileMenuOpen, closeMobileMenu } = useUIStore()
-  useClickOutside(sidebarRef, closeMobileMenu)
+  const { isMobileSidebarOpen, closeMobileSidebar } = useUIStore()
+  useClickOutside(sidebarRef, closeMobileSidebar)
   const { name, avatarUrl, pets } = MOCK_USER
   const t = useTranslations('navigation')
   return (
@@ -25,20 +25,20 @@ export const MobileSidebar = () => {
       ref={sidebarRef}
       className={clsx(
         `fixed inset-0 z-100 flex h-full w-2/3 transform flex-col justify-between bg-white px-4 py-8 transition-transform duration-300 md:hidden`,
-        isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
       )}
-      aria-hidden={!isMobileMenuOpen}
+      aria-hidden={!isMobileSidebarOpen}
     >
       <AppButton
         variant='icon'
-        onClick={closeMobileMenu}
+        onClick={closeMobileSidebar}
         icon={<PlusIcon className='rotate-45' />}
         className='absolute top-9 right-2 h-8 w-8'
       />
       <div>
         <Link
           href={'/profile'}
-          onClick={closeMobileMenu}
+          onClick={closeMobileSidebar}
           className='flex flex-col gap-2.5'
         >
           <div className='h-10 w-10 rounded-full border border-gray-600 p-0.75'>
@@ -58,7 +58,7 @@ export const MobileSidebar = () => {
         <li>
           <Link
             href={'/profile/settings'}
-            onClick={closeMobileMenu}
+            onClick={closeMobileSidebar}
             className='text-md font-semibold'
           >
             {t('settings')}
@@ -67,11 +67,7 @@ export const MobileSidebar = () => {
       </ul>
       <div>
         <Divider className='mb-2.5' />
-        <AuthActionsBlock
-          user={MOCK_USER}
-          closeMobileMenu={closeMobileMenu}
-          isAuthenticated={true}
-        />
+        <AuthActionsBlock user={MOCK_USER} isVisible={true} isAuthenticated={true} />
       </div>
     </aside>
   )

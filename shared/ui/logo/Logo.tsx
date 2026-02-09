@@ -19,7 +19,7 @@ export const Logo = ({ closeMobileMenu, className }: ILogoProps) => {
     >
       {/* TODO: Create custom logo */}
       <Image src='/Logo.svg' alt='logo' width={46} height={46} />
-      <span className='text-4xl font-bold'>{t('title')}</span>
+      <span className='text-4xl font-bold md:hidden lg:block'>{t('title')}</span>
     </Link>
   )
 }
