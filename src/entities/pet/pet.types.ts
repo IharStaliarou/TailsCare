@@ -1,15 +1,10 @@
-// TODO: delete when schemas will be ready
+import { TPetFormValues } from './pet.schema'
 
 export type TGender = 'male' | 'female'
 
-export interface IPet {
+export interface IPet extends Omit<TPetFormValues, 'avatar'> {
   id: string
-  name: string
-  type: string
-  gender: TGender
-  breed: string
-  weight: number
-  avatarUrl: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
+  avatar: string | null
 }

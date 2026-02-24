@@ -36,7 +36,7 @@ enum ActivityLevel {
 
 model Pet {
   id        String   @id @default(uuid())
-  name      String
+  name      String   @unique()
   type      PetType
   gender    Gender
   breed     String?

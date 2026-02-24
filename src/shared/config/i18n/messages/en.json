@@ -101,6 +101,7 @@
     },
     "pet": {
       "name": {
+        "nameUnique": "Pet with this name already exists",
         "min": "Pet name must be at least 2 characters long",
         "max": "Pet name must be at most 50 characters long"
       },

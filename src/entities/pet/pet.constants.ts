@@ -23,3 +23,5 @@ export const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 export const formatsString = ALLOWED_FILE_TYPES.map((t) =>
   t.split('/')[1].toUpperCase()
 ).join(', ')
+
+export const PET_LS_KEY = 'tails-care-pets-local-storage-data-key'
