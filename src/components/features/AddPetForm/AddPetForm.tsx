@@ -1,7 +1,6 @@
 'use client'
 
-import { ImageUploader } from '@/components/features'
-import { AppButton, Input, RadioButtonGroup } from '@/components/ui'
+import { AppButton, ImageUploader, Input, RadioButtonGroup } from '@/components/ui'
 import { formatsString } from '@/entities/pet/pet.constants'
 import { TDictionary } from '@/shared/config/i18n'
 import { useMessages, useTranslations } from 'next-intl'

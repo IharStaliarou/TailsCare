@@ -2,7 +2,7 @@
 
 import { IUser } from '@/entities/user/types'
 import { Link, usePathname } from '@/shared/config/i18n'
-import { useUIStore } from '@/shared/store/use-ui-store'
+import { useUIStore } from '@/shared/store/useUiStore'
 import clsx from 'clsx'
 
 import { getLinks } from '../model'

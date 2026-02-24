@@ -10,8 +10,6 @@ import {
 import clsx from 'clsx'
 import { useLocale } from 'next-intl'
 
-import { useUIStore } from '../../shared/store/use-ui-store'
-
 interface ILanguageSwitcherProps {
   className?: string
 }
@@ -20,11 +18,13 @@ export const LanguageSwitcher = ({ className }: ILanguageSwitcherProps) => {
   const locale = useLocale() as TLocale
   const router = useRouter()
   const pathname = usePathname()
-  const { closeMobileSidebar } = useUIStore()
 
   const handleLanguageChange = (newLocale: TLocale) => {
+    if (locale === newLocale) {
+      return
+    }
+
     router.replace(pathname, { locale: newLocale })
-    closeMobileSidebar()
   }
   return (
     <div className={`flex gap-1 rounded-lg border-gray-600 bg-gray-600 p-1 ${className}`}>
@@ -33,7 +33,7 @@ export const LanguageSwitcher = ({ className }: ILanguageSwitcherProps) => {
           key={lang}
           onClick={() => handleLanguageChange(lang)}
           className={clsx(
-            'w-1/2 rounded-md p-2 text-xs font-medium uppercase transition-all duration-300',
+            'active:bg-secondary-active w-1/2 rounded-md p-2 text-xs font-medium uppercase transition-all duration-300',
             locale === lang
               ? 'bg-secondary hover:bg-secondary-hover text-white'
               : 'text-gray-400 hover:bg-gray-700 hover:text-white active:bg-gray-100'

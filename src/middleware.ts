@@ -1,6 +1,5 @@
+import { routing } from '@/shared/config/i18n'
 import createMiddleware from 'next-intl/middleware'
-
-import { routing } from './src/shared/config/i18n/routing'
 
 export default createMiddleware(routing)
 
