@@ -2,13 +2,13 @@
 
 import { useRef } from 'react'
 
-import { AuthActionsBlock } from '@/components/features'
+import { AuthActionsBlock, LanguageSwitcher } from '@/components/features'
 import { PlusIcon } from '@/components/icons'
 import { AppButton, Divider } from '@/components/ui'
 import { MOCK_USER } from '@/entities/user/types'
 import { Link } from '@/shared/config/i18n'
 import { useClickOutside } from '@/shared/hooks/useClickOutside'
-import { useUIStore } from '@/shared/store/use-ui-store'
+import { useUIStore } from '@/shared/store/useUiStore'
 import clsx from 'clsx'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -67,7 +67,8 @@ export const MobileSidebar = () => {
       </ul>
       <div>
         <Divider className='mb-2.5' />
-        <AuthActionsBlock user={MOCK_USER} isVisible={true} isAuthenticated={true} />
+        <AuthActionsBlock user={MOCK_USER} isAuthenticated={true} />
+        <LanguageSwitcher />
       </div>
     </aside>
   )

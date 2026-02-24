@@ -2,7 +2,7 @@
 
 import { HelpIcon, UserIcon } from '@/components/icons'
 import { AppButton } from '@/components/ui'
-import { useUIStore } from '@/shared/store/use-ui-store'
+import { useUIStore } from '@/shared/store/useUiStore'
 
 export const MobileTopBar = () => {
   const { openMobileSidebar } = useUIStore()

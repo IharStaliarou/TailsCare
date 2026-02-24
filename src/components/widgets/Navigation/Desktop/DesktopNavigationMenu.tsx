@@ -1,14 +1,10 @@
 'use client'
 
-import { MouseEvent } from 'react'
-
-import { AuthActionsBlock } from '@/components/features'
+import { AuthActionsBlock, LanguageSwitcher } from '@/components/features'
 import { Logo } from '@/components/features/Logo'
-import { GearIcon } from '@/components/icons'
-import { AppButton } from '@/components/ui'
 import { IUser } from '@/entities/user/types'
 import { Link, usePathname } from '@/shared/config/i18n'
-import { useUIStore } from '@/shared/store/use-ui-store'
+import { useUIStore } from '@/shared/store/useUiStore'
 import clsx from 'clsx'
 import { useTranslations } from 'next-intl'
 
@@ -24,14 +20,8 @@ export const DesktopNavigationMenu = ({
   links: ReturnType<typeof getLinks>
 }) => {
   const pathname = usePathname()
-  const { toggleDesktopActionsMenu, closeMobileSidebar, isDesktopActionsMenuOpen } =
-    useUIStore()
+  const { closeMobileSidebar } = useUIStore()
   const t = useTranslations('navigation')
-
-  const handleToggleActionsMenu = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    toggleDesktopActionsMenu()
-  }
 
   return (
     <nav className='hidden px-4 md:flex md:h-full md:justify-between md:px-6 2xl:mx-auto 2xl:w-360'>
@@ -56,18 +46,13 @@ export const DesktopNavigationMenu = ({
         })}
       </ul>
 
-      <div className='relative'>
-        <AppButton
-          variant='icon'
-          icon={<GearIcon className='h-10 w-10' />}
-          onClick={handleToggleActionsMenu}
-        />
+      <div className='relative flex items-center gap-2'>
         <AuthActionsBlock
           user={user}
-          className='absolute top-[80%] right-10'
-          isVisible={isDesktopActionsMenuOpen}
           isAuthenticated={isAuthenticated}
+          className='flex-row'
         />
+        <LanguageSwitcher className='h-11.25' />
       </div>
     </nav>
   )
