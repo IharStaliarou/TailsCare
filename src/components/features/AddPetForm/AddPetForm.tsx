@@ -128,10 +128,10 @@ export const AddPetForm = () => {
 
         <div className='flex gap-4 pt-4'>
           <AppButton
+            type='submit'
             variant='outline'
             label={tCommon('cancel')}
             className='w-1/2'
-            onClick={() => {}}
           />
           <AppButton
             type='submit'
