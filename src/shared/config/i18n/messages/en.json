@@ -96,6 +96,9 @@
     }
   },
   "modals": {
+    "addPet": {
+      "label": "Add Pet"
+    },
     "editPet": {
       "label": "Pet editing"
     },

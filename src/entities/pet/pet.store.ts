@@ -13,6 +13,10 @@ interface IPetState {
   pets: IPet[]
   storageUsagePercent: number
 
+  isAddPetModalOpen: boolean
+  openAddPetModal: () => void
+  closeAddModal: () => void
+
   editingPetId: string | null
   isEditModalOpen: boolean
   openEditModal: (id: string) => void
@@ -34,13 +38,12 @@ export const usePetStore = create<IPetState>()(
     (set, get) => ({
       pets: [],
 
+      isAddPetModalOpen: false,
+      openAddPetModal: () => set({ isAddPetModalOpen: true }),
+      closeAddModal: () => set({ isAddPetModalOpen: false }),
+
       editingPetId: null,
       isEditModalOpen: false,
-
-      storageUsagePercent: 0,
-      _hasHydrated: false,
-      setHasHydrated: (state) => set({ _hasHydrated: state }),
-
       openEditModal: (id) => set({ editingPetId: id, isEditModalOpen: true }),
       closeEditModal: () => set({ editingPetId: null, isEditModalOpen: false }),
 
@@ -48,31 +51,28 @@ export const usePetStore = create<IPetState>()(
         set((state) => ({ pets: [...state.pets, pet] }))
         get().calculateStorageUsage()
       },
-
       removePet: (id) => {
         set((state) => ({
           pets: state.pets.filter((pet) => pet.id !== id),
         }))
         get().calculateStorageUsage()
       },
-
       updatePet: (id, data) => {
         set((state) => ({
           pets: state.pets.map((pet) => (pet.id === id ? { ...pet, ...data } : pet)),
         }))
         get().calculateStorageUsage()
       },
-
       checkIsNameUnique: (name: string) => {
         const { pets } = get()
         return !pets.some((pet) => pet.name.toLowerCase() === name.toLowerCase())
       },
 
+      storageUsagePercent: 0,
       clearStorage: () => {
         set({ pets: [] })
         get().calculateStorageUsage()
       },
-
       calculateStorageUsage: () => {
         if (typeof window === 'undefined') return
 
@@ -82,6 +82,9 @@ export const usePetStore = create<IPetState>()(
 
         set({ storageUsagePercent: Number(usage.toFixed(2)) })
       },
+
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
     }),
     {
       name: PET_LS_KEY,

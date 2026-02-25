@@ -7,7 +7,7 @@ import { useUIStore } from '@/shared/store/useUiStore'
 export const MobileTopBar = () => {
   const { openMobileSidebar } = useUIStore()
   return (
-    <nav className='flex h-full w-full justify-between'>
+    <nav className='flex h-full w-full justify-between md:hidden'>
       <AppButton
         variant='icon'
         icon={<UserIcon className='h-10 w-10' />}
