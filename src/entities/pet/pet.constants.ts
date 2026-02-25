@@ -25,3 +25,8 @@ export const formatsString = ALLOWED_FILE_TYPES.map((t) =>
 ).join(', ')
 
 export const PET_LS_KEY = 'tails-care-pets-local-storage-data-key'
+
+export const DEFAULT_PET_AVATAR: Record<PetTypeEnum, string> = {
+  [PetTypeEnum.CAT]: '/image2.png',
+  [PetTypeEnum.DOG]: '/image1.png',
+}

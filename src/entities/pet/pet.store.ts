@@ -19,6 +19,9 @@ interface PetState {
   checkIsNameUnique: (name: string) => boolean
   clearStorage: () => void
   calculateStorageUsage: () => void
+
+  _hasHydrated: boolean
+  setHasHydrated: (state: boolean) => void
 }
 
 export const usePetStore = create<PetState>()(
@@ -26,6 +29,8 @@ export const usePetStore = create<PetState>()(
     (set, get) => ({
       pets: [],
       storageUsagePercent: 0,
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
 
       addPet: (pet) => {
         set((state) => ({ pets: [...state.pets, pet] }))
@@ -69,14 +74,8 @@ export const usePetStore = create<PetState>()(
     {
       name: PET_LS_KEY,
       storage: createJSONStorage(() => localStorage),
-      onRehydrateStorage: (state) => {
-        return (rehydratedState, error) => {
-          if (error) {
-            console.error('[Pet Store] Rehydration error:', error)
-          } else {
-            rehydratedState?.calculateStorageUsage()
-          }
-        }
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
       },
     }
   )

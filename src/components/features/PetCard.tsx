@@ -1,23 +1,26 @@
+'use client'
+
 import { EditIcon, TrashIcon } from '@/components/icons'
 import { AppButton } from '@/components/ui'
+import { DEFAULT_PET_AVATAR } from '@/entities/pet/pet.constants'
 import { IPet } from '@/entities/pet/pet.types'
 import { ROUTES } from '@/shared/config/routes'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 interface IPetCardProps {
   pet: IPet
 }
 
-export const PetCard = async ({ pet }: IPetCardProps) => {
-  const t = await getTranslations('common')
-  const { name, avatarUrl, breed, weight } = pet
+export const PetCard = ({ pet }: IPetCardProps) => {
+  const t = useTranslations('common')
+  const { name, avatar, breed, currentWeight, type } = pet
   return (
     <li className='flex h-25 w-full justify-between gap-2.5 rounded-lg p-4 shadow-xl md:h-auto md:w-80 md:flex-col md:justify-start'>
       <div className='flex gap-2.5 md:flex-col'>
         <div className='relative w-17 md:h-75 md:w-full'>
           <Image
-            src={avatarUrl}
+            src={avatar || DEFAULT_PET_AVATAR[type]}
             alt={name}
             fill
             className='rounded-full object-cover md:rounded-md'
@@ -27,7 +30,7 @@ export const PetCard = async ({ pet }: IPetCardProps) => {
           <h3 className='text-xl font-bold'>{name}</h3>
           <div className='flex gap-2.5 md:justify-between md:gap-0'>
             <p className='font-semibold'>{breed}</p>
-            <span className='font-bold'>{`${weight} ${t('kg')}`}</span>
+            <span className='font-bold'>{`${currentWeight} ${t('kg')}`}</span>
           </div>
         </div>
       </div>

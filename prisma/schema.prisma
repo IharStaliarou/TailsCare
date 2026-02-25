@@ -36,7 +36,7 @@ enum ActivityLevel {
 
 model Pet {
   id        String   @id @default(uuid())
-  name      String   @unique()
+  name      String
   type      PetType
   gender    Gender
   breed     String?
@@ -55,6 +55,8 @@ model Pet {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([name, ownerId])
 }
 
 model WeightRecord {

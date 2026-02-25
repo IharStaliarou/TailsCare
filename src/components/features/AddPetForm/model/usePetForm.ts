@@ -5,7 +5,8 @@ import { FormEvent, useCallback, useState } from 'react'
 import { getPetSchema, TPetFormValues } from '@/entities/pet/pet.schema'
 import { usePetStore } from '@/entities/pet/pet.store'
 import { IPet } from '@/entities/pet/pet.types'
-import { TDictionary } from '@/shared/config/i18n'
+import { TDictionary, useRouter } from '@/shared/config/i18n'
+import { ROUTES } from '@/shared/config/routes'
 import { ZodError } from 'zod'
 
 type TFormFieldValue = TPetFormValues[keyof TPetFormValues]
@@ -26,6 +27,7 @@ const INITIAL_FORM_STATE: Partial<TPetFormValues> = {
 }
 
 export const usePetForm = (dictionary: TDictionary) => {
+  const router = useRouter()
   const schema = getPetSchema(dictionary)
 
   const [formData, setFormData] = useState(INITIAL_FORM_STATE)
@@ -88,6 +90,7 @@ export const usePetForm = (dictionary: TDictionary) => {
       // TODO: add modal if ls limit > 90%
       // TODO: server action
       setFormData(INITIAL_FORM_STATE)
+      await router.push(ROUTES.pets)
     } catch (error) {
       if (error instanceof ZodError) {
         const newErrors: Record<string, string> = {}
