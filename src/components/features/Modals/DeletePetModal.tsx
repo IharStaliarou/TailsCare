@@ -6,8 +6,9 @@ import { useTranslations } from 'next-intl'
 interface IDeletePetModalProps {
   isDeleteModalOpen: boolean
   pet: IPet
-  setIsDeleteModalOpen: (value: boolean) => void
+  setIsDeleteModalOpen: (isOpen: boolean) => void
   handleDelete: () => void
+  className?: string
 }
 
 const DeletePetModal = ({
@@ -15,6 +16,7 @@ const DeletePetModal = ({
   pet,
   setIsDeleteModalOpen,
   handleDelete,
+  className,
 }: IDeletePetModalProps) => {
   const t = useTranslations('modals.deletePet')
 
@@ -24,7 +26,8 @@ const DeletePetModal = ({
     <Modal
       isOpen={isDeleteModalOpen}
       onClose={() => setIsDeleteModalOpen(false)}
-      title={t('title')}
+      title={t('label')}
+      className={className}
     >
       <div className='space-y-6'>
         <p className='lineBreak text-center text-gray-900'>

@@ -6,12 +6,14 @@ import { ROUTES } from '@/shared/config/routes'
 import { useTranslations } from 'next-intl'
 
 import { AppButton } from '../ui'
+import { EditPetModal } from './Modals/EditPetModal'
 import { PetCard } from './PetCard'
 
 export const PetsList = () => {
   const t = useTranslations('petsPage')
 
-  const { pets, _hasHydrated } = usePetStore()
+  const { pets, isEditModalOpen, editingPetId, closeEditModal, _hasHydrated } =
+    usePetStore()
 
   // TODO: add skeleton loader
   if (!_hasHydrated) {
@@ -32,6 +34,11 @@ export const PetsList = () => {
       {pets.map((pet: IPet) => (
         <PetCard key={pet.id} pet={pet} />
       ))}
+      <EditPetModal
+        editPetId={editingPetId}
+        isEditModalOpen={isEditModalOpen}
+        onClose={closeEditModal}
+      />
     </ul>
   )
 }

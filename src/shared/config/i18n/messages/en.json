@@ -96,8 +96,11 @@
     }
   },
   "modals": {
+    "editPet": {
+      "label": "Pet editing"
+    },
     "deletePet": {
-      "title": "Pet deletion",
+      "label": "Pet deletion",
       "description": "Are you sure you want to delete Your pet {petName}?\nAll data about pet will be lost.",
       "cancel": "Cancel",
       "delete": "Delete"

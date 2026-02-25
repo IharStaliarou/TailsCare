@@ -2,18 +2,27 @@
 
 import { AppButton, ImageUploader, Input, RadioButtonGroup } from '@/components/ui'
 import { formatsString } from '@/entities/pet/pet.constants'
+import { IPet } from '@/entities/pet/pet.types'
 import { TDictionary } from '@/shared/config/i18n'
 import { useMessages, useTranslations } from 'next-intl'
 
 import { FIELDS_CONFIG, usePetForm, usePetOptions } from './model'
 
-export const AddPetForm = () => {
+interface IAddPetFormProps {
+  initialPetData?: IPet
+  onAfterSubmit?: () => void
+}
+
+export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) => {
   const dictionary = useMessages() as TDictionary
   const tForm = useTranslations('forms.pet')
   const tCommon = useTranslations('common')
 
-  const { formData, errors, isSubmitting, handleChange, handleSubmit } =
-    usePetForm(dictionary)
+  const { formData, errors, isSubmitting, handleChange, handleSubmit } = usePetForm(
+    dictionary,
+    initialPetData,
+    onAfterSubmit
+  )
 
   const {
     name,

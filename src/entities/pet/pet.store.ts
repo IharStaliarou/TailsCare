@@ -9,9 +9,14 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { PET_LS_KEY } from './pet.constants'
 import { IPet } from './pet.types'
 
-interface PetState {
+interface IPetState {
   pets: IPet[]
   storageUsagePercent: number
+
+  editingPetId: string | null
+  isEditModalOpen: boolean
+  openEditModal: (id: string) => void
+  closeEditModal: () => void
 
   addPet: (pet: IPet) => void
   removePet: (id: string) => void
@@ -24,13 +29,20 @@ interface PetState {
   setHasHydrated: (state: boolean) => void
 }
 
-export const usePetStore = create<PetState>()(
+export const usePetStore = create<IPetState>()(
   persist(
     (set, get) => ({
       pets: [],
+
+      editingPetId: null,
+      isEditModalOpen: false,
+
       storageUsagePercent: 0,
       _hasHydrated: false,
       setHasHydrated: (state) => set({ _hasHydrated: state }),
+
+      openEditModal: (id) => set({ editingPetId: id, isEditModalOpen: true }),
+      closeEditModal: () => set({ editingPetId: null, isEditModalOpen: false }),
 
       addPet: (pet) => {
         set((state) => ({ pets: [...state.pets, pet] }))

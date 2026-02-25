@@ -21,7 +21,7 @@ export const PetCard = ({ pet }: IPetCardProps) => {
   const t = useTranslations('common')
 
   const { id: petId, name, avatar, breed, currentWeight, type } = pet
-  const { removePet } = usePetStore()
+  const { openEditModal, removePet } = usePetStore()
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
@@ -58,9 +58,9 @@ export const PetCard = ({ pet }: IPetCardProps) => {
             className='hidden grow md:flex'
           />
           <AppButton
-            to={`/pets/${pet.id}`}
             variant='icon'
             icon={<EditIcon className='w-6 stroke-2 text-white' />}
+            onClick={() => openEditModal(pet.id)}
             className='w-12 bg-yellow-300 hover:bg-yellow-600 active:bg-yellow-200'
           />
           <AppButton

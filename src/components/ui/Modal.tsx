@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useRef } from 'react'
 
 import { PlusIcon } from '@/components/icons'
 import { useClickOutside } from '@/shared/hooks/useClickOutside'
+import clsx from 'clsx'
 import { createPortal } from 'react-dom'
 
 export interface IModalProps {
@@ -11,9 +12,10 @@ export interface IModalProps {
   children: ReactNode
   isOpen: boolean
   onClose: () => void
+  className?: string
 }
 
-export const Modal = ({ title, children, isOpen, onClose }: IModalProps) => {
+export const Modal = ({ title, children, isOpen, onClose, className }: IModalProps) => {
   const contentRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -41,7 +43,7 @@ export const Modal = ({ title, children, isOpen, onClose }: IModalProps) => {
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm'>
       <div
         ref={contentRef}
-        className='w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl'
+        className={clsx('w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl', className)}
       >
         <div className='mb-4 flex items-center justify-between'>
           <h2 className='text-xl font-bold'>{title}</h2>
