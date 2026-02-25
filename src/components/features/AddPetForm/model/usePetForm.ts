@@ -5,6 +5,7 @@ import { FormEvent, useCallback, useState } from 'react'
 import { getPetSchema, TPetFormValues } from '@/entities/pet/pet.schema'
 import { usePetStore } from '@/entities/pet/pet.store'
 import { IPet } from '@/entities/pet/pet.types'
+import { preparePetData } from '@/entities/pet/pet.utils'
 import { TDictionary } from '@/shared/config/i18n'
 import { ZodError } from 'zod'
 
@@ -25,15 +26,20 @@ const INITIAL_FORM_STATE: Partial<TPetFormValues> = {
   avatar: null,
 }
 
-export const usePetForm = (dictionary: TDictionary) => {
+export const usePetForm = (
+  dictionary: TDictionary,
+  initialPetData?: IPet,
+  onSuccess?: () => void
+) => {
   const schema = getPetSchema(dictionary)
 
-  const [formData, setFormData] = useState(INITIAL_FORM_STATE)
+  const [formData, setFormData] = useState<Partial<TPetFormValues>>(
+    initialPetData ? { ...initialPetData } : INITIAL_FORM_STATE
+  )
 
+  const { addPet, updatePet, checkIsNameUnique } = usePetStore()
   const [errors, setErrors] = useState<TFormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const { addPet, checkIsNameUnique } = usePetStore()
 
   const handleChange = useCallback(
     (name: keyof TPetFormValues, value: TFormFieldValue) => {
@@ -65,29 +71,36 @@ export const usePetForm = (dictionary: TDictionary) => {
 
     try {
       const validatedData = schema.parse(formData)
-      const isUnique = checkIsNameUnique(validatedData.name)
 
-      if (!isUnique) {
-        setErrors((prev) => ({
-          ...prev,
-          name: dictionary.validations.pet.name.nameUnique,
-        }))
-        return
-      }
-      const now = new Date().toISOString()
+      if (!initialPetData || initialPetData.name !== validatedData.name) {
+        const isUnique = checkIsNameUnique(validatedData.name)
 
-      const newPet: IPet = {
-        ...validatedData,
-        id: crypto.randomUUID(),
-        createdAt: now,
-        updatedAt: now,
-        avatar: typeof validatedData.avatar === 'string' ? validatedData.avatar : null,
+        if (!isUnique) {
+          setErrors((prev) => ({
+            ...prev,
+            name: dictionary.validations.pet.name.nameUnique,
+          }))
+          return
+        }
       }
 
-      addPet(newPet)
-      // TODO: add modal if ls limit > 90%
+      const petData = preparePetData(validatedData, initialPetData)
+
+      if (initialPetData) {
+        updatePet(initialPetData.id, petData)
+      } else {
+        addPet(petData as IPet)
+      }
+
+      if (onSuccess) {
+        onSuccess()
+      }
+
+      if (!initialPetData) {
+        setFormData(INITIAL_FORM_STATE)
+      }
+
       // TODO: server action
-      setFormData(INITIAL_FORM_STATE)
     } catch (error) {
       if (error instanceof ZodError) {
         const newErrors: Record<string, string> = {}

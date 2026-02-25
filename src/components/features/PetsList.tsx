@@ -1,29 +1,53 @@
-import { IPet } from '@/entities/pet/pet.types'
-import { getTranslations } from 'next-intl/server'
+'use client'
 
+import { usePetStore } from '@/entities/pet/pet.store'
+import { IPet } from '@/entities/pet/pet.types'
+import { ROUTES } from '@/shared/config/routes'
+import { useTranslations } from 'next-intl'
+
+import { AppButton } from '../ui'
+import { AddPetModal } from './Modals/AddPetModal'
+import { EditPetModal } from './Modals/EditPetModal'
 import { PetCard } from './PetCard'
 
-interface IPetsListProps {
-  pets: IPet[]
-}
+export const PetsList = () => {
+  const t = useTranslations('petsPage')
 
-export const PetsList = async ({ pets }: IPetsListProps) => {
-  const t = await getTranslations('petsPage')
-  const tError = await getTranslations('error')
+  const {
+    pets,
+    isAddPetModalOpen,
+    closeAddModal,
+    isEditModalOpen,
+    editingPetId,
+    closeEditModal,
+    _hasHydrated,
+  } = usePetStore()
 
-  if (pets.length === 0) {
-    return <h2 className='text-center text-4xl'>{t('noPets')}</h2>
+  // TODO: add skeleton loader
+  if (!_hasHydrated) {
+    return <div>Loading...</div>
   }
 
-  if (!Array.isArray(pets)) {
-    return <h2 className='text-center text-4xl'>{tError('somethingError')}</h2>
+  if (pets.length === 0) {
+    return (
+      <div>
+        <h2 className='text-center text-4xl'>{t('noPets')}</h2>
+        <AppButton to={ROUTES.addPet} label='Add pet' />
+      </div>
+    )
   }
 
   return (
-    <ul className='flex flex-col flex-wrap items-center gap-5 md:flex-row'>
+    <ul className='flex flex-col flex-wrap items-center gap-5 md:flex-row md:justify-evenly'>
       {pets.map((pet: IPet) => (
         <PetCard key={pet.id} pet={pet} />
       ))}
+      <AddPetModal isAddPetModalOpen={isAddPetModalOpen} onClose={closeAddModal} />
+      <EditPetModal
+        editPetId={editingPetId}
+        isEditModalOpen={isEditModalOpen}
+        onClose={closeEditModal}
+      />
     </ul>
   )
 }

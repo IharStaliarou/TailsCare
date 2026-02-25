@@ -1,17 +1,10 @@
-import {
-  BellIcon,
-  CalendarIcon,
-  EarthIcon,
-  HomeIcon,
-  NavPlusIcon,
-} from '@/components/icons'
+import { BellIcon, CalendarIcon, EarthIcon, HomeIcon } from '@/components/icons'
 import { ROUTES } from '@/shared/config/routes'
 
 export const NAVIGATION_LINKS = {
   common: [
     { label: 'home', href: ROUTES.home, icon: EarthIcon },
     { label: 'pets', href: ROUTES.pets, icon: HomeIcon },
-    { label: 'addPet', href: ROUTES.addPet, icon: NavPlusIcon },
     { label: 'calendar', href: ROUTES.calendar, icon: CalendarIcon },
     { label: 'notifications', href: ROUTES.notifications, icon: BellIcon },
   ] as const,

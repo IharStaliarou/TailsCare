@@ -9,9 +9,18 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { PET_LS_KEY } from './pet.constants'
 import { IPet } from './pet.types'
 
-interface PetState {
+interface IPetState {
   pets: IPet[]
   storageUsagePercent: number
+
+  isAddPetModalOpen: boolean
+  openAddPetModal: () => void
+  closeAddModal: () => void
+
+  editingPetId: string | null
+  isEditModalOpen: boolean
+  openEditModal: (id: string) => void
+  closeEditModal: () => void
 
   addPet: (pet: IPet) => void
   removePet: (id: string) => void
@@ -19,43 +28,51 @@ interface PetState {
   checkIsNameUnique: (name: string) => boolean
   clearStorage: () => void
   calculateStorageUsage: () => void
+
+  _hasHydrated: boolean
+  setHasHydrated: (state: boolean) => void
 }
 
-export const usePetStore = create<PetState>()(
+export const usePetStore = create<IPetState>()(
   persist(
     (set, get) => ({
       pets: [],
-      storageUsagePercent: 0,
+
+      isAddPetModalOpen: false,
+      openAddPetModal: () => set({ isAddPetModalOpen: true }),
+      closeAddModal: () => set({ isAddPetModalOpen: false }),
+
+      editingPetId: null,
+      isEditModalOpen: false,
+      openEditModal: (id) => set({ editingPetId: id, isEditModalOpen: true }),
+      closeEditModal: () => set({ editingPetId: null, isEditModalOpen: false }),
 
       addPet: (pet) => {
         set((state) => ({ pets: [...state.pets, pet] }))
         get().calculateStorageUsage()
       },
-
       removePet: (id) => {
         set((state) => ({
           pets: state.pets.filter((pet) => pet.id !== id),
         }))
         get().calculateStorageUsage()
       },
-
       updatePet: (id, data) => {
         set((state) => ({
           pets: state.pets.map((pet) => (pet.id === id ? { ...pet, ...data } : pet)),
         }))
         get().calculateStorageUsage()
       },
-
       checkIsNameUnique: (name: string) => {
         const { pets } = get()
         return !pets.some((pet) => pet.name.toLowerCase() === name.toLowerCase())
       },
 
+      storageUsagePercent: 0,
       clearStorage: () => {
         set({ pets: [] })
         get().calculateStorageUsage()
       },
-
       calculateStorageUsage: () => {
         if (typeof window === 'undefined') return
 
@@ -65,18 +82,15 @@ export const usePetStore = create<PetState>()(
 
         set({ storageUsagePercent: Number(usage.toFixed(2)) })
       },
+
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
     }),
     {
       name: PET_LS_KEY,
       storage: createJSONStorage(() => localStorage),
-      onRehydrateStorage: (state) => {
-        return (rehydratedState, error) => {
-          if (error) {
-            console.error('[Pet Store] Rehydration error:', error)
-          } else {
-            rehydratedState?.calculateStorageUsage()
-          }
-        }
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
       },
     }
   )

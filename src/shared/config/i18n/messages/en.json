@@ -29,6 +29,13 @@
     "signUp": "Sign Up",
     "signOut": "Sign Out"
   },
+  "localStorage": {
+    "banner": {
+      "usage": "Browser storage usage:",
+      "almostFull": "Your local storage is almost full",
+      "considerRegister": "We recommend registering to save your data to the cloud and avoid losing it!"
+    }
+  },
   "forms": {
     "pet": {
       "avatar": {
@@ -86,14 +93,21 @@
           }
         }
       }
+    }
+  },
+  "modals": {
+    "addPet": {
+      "label": "Add Pet"
     },
-    "petName": "Pet Name",
-    "petType": "Pet Type",
-    "breed": "Breed",
-    "gender": "Gender",
-    "birthday": "Birthday",
-    "weight": "Weight (kg)",
-    "targetWeight": "Target Weight (kg)"
+    "editPet": {
+      "label": "Pet editing"
+    },
+    "deletePet": {
+      "label": "Pet deletion",
+      "description": "Are you sure you want to delete Your pet {petName}?\nAll data about pet will be lost.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   },
   "validations": {
     "common": {
