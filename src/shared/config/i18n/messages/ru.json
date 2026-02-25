@@ -95,6 +95,14 @@
       }
     }
   },
+  "modals": {
+    "deletePet": {
+      "title": "Удаление питомца",
+      "description": "Вы уверены, что хотите удалить Вашего питомца {petName}?\n\nВсе данные о питомце будут потеряны.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
+  },
   "validations": {
     "common": {
       "notEmpty": "Это поле обязательно"

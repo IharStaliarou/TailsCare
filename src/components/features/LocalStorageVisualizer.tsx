@@ -16,7 +16,7 @@ export const LocalStorageVisualizer = ({ className }: ILocalStorageVisualizerPro
   const t = useTranslations('localStorage.banner')
   const { storageUsagePercent } = usePetStore()
 
-  if (storageUsagePercent < MIN_SIZE_WARNING_THRESHOLD) return null // Не мозолим глаза, если места много
+  if (storageUsagePercent < MIN_SIZE_WARNING_THRESHOLD) return null
 
   const isWarning = storageUsagePercent > STORAGE_WARNING_THRESHOLD
 

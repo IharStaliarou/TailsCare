@@ -93,14 +93,15 @@
           }
         }
       }
-    },
-    "petName": "Pet Name",
-    "petType": "Pet Type",
-    "breed": "Breed",
-    "gender": "Gender",
-    "birthday": "Birthday",
-    "weight": "Weight (kg)",
-    "targetWeight": "Target Weight (kg)"
+    }
+  },
+  "modals": {
+    "deletePet": {
+      "title": "Pet deletion",
+      "description": "Are you sure you want to delete Your pet {petName}?\nAll data about pet will be lost.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   },
   "validations": {
     "common": {
