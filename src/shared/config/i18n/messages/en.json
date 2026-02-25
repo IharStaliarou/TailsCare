@@ -29,6 +29,13 @@
     "signUp": "Sign Up",
     "signOut": "Sign Out"
   },
+  "localStorage": {
+    "banner": {
+      "usage": "Browser storage usage:",
+      "almostFull": "Your local storage is almost full",
+      "considerRegister": "We recommend registering to save your data to the cloud and avoid losing it!"
+    }
+  },
   "forms": {
     "pet": {
       "avatar": {

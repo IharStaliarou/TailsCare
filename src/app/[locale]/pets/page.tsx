@@ -1,4 +1,5 @@
 import { PetsList } from '@/components/features'
+import { LocalStorageVisualizer } from '@/components/features/LocalStorageVisualizer'
 import { PlusIcon } from '@/components/icons'
 import { AppButton } from '@/components/ui'
 import { ROUTES } from '@/shared/config/routes'
@@ -9,12 +10,15 @@ export default async function PetsPage() {
 
   return (
     <section className='flex flex-col gap-5'>
-      <AppButton
-        to={ROUTES.addPet}
-        label={t('add')}
-        icon={<PlusIcon className='w-4 stroke-2' />}
-        className='max-w-fit self-end'
-      />
+      <div className='flex flex-col justify-between gap-2.5 md:flex-row'>
+        <LocalStorageVisualizer />
+        <AppButton
+          to={ROUTES.addPet}
+          label={t('add')}
+          icon={<PlusIcon className='w-4 stroke-2' />}
+          className='max-w-fit self-end md:self-auto'
+        />
+      </div>
       <PetsList />
     </section>
   )
