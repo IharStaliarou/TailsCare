@@ -52,7 +52,8 @@
       },
       "birthday": {
         "label": "Birthday",
-        "placeholder": "MM.DD.YYYY"
+        "placeholder": "MM.DD.YYYY",
+        "age": "Age"
       },
       "currentWeight": {
         "label": "Current Weight (kg)",
@@ -92,7 +93,8 @@
             "description": "Very active"
           }
         }
-      }
+      },
+      "weightHistory": "Weight history"
     }
   },
   "modals": {
@@ -139,7 +141,17 @@
     "noPets": "You don't have pets yet!"
   },
   "petDetailsPage": {
-    "title": "This is your pet {petName}"
+    "title": "This is your pet {petName}",
+    "age": {
+      "days": "days",
+      "daysShort": "d.",
+      "weeks": "weeks",
+      "weeksShort": "w.",
+      "months": "months",
+      "monthsShort": "m.",
+      "years": "years",
+      "yearsShort": "y."
+    }
   },
   "petTypes": {
     "DOG": "Dog",

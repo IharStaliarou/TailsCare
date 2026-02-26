@@ -54,7 +54,7 @@ export const PetCard = ({ pet }: IPetCardProps) => {
         <div className='my-auto flex h-12 w-auto gap-2.5 md:mx-0 md:w-full'>
           <AppButton
             label={t('details')}
-            to={ROUTES.petDetails}
+            to={ROUTES.petDetails(petId)}
             className='hidden grow md:flex'
           />
           <AppButton
