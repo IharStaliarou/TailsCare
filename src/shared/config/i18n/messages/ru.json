@@ -52,7 +52,8 @@
       },
       "birthday": {
         "label": "Дата рождения",
-        "placeholder": "ДД.ММ.ГГГГ"
+        "placeholder": "ДД.ММ.ГГГГ",
+        "age": "Возраст"
       },
       "currentWeight": {
         "label": "Вес (кг)",
@@ -92,7 +93,8 @@
             "description": "Очень активный"
           }
         }
-      }
+      },
+      "weightHistory": "История веса"
     }
   },
   "modals": {
@@ -139,7 +141,17 @@
     "noPets": "У вас пока еще нет питомцев!"
   },
   "petDetailsPage": {
-    "title": "Это ваш питомец {petName}"
+    "title": "Это ваш питомец {petName}",
+    "age": {
+      "days": "дней",
+      "daysShort": "д.",
+      "weeks": "недель",
+      "weeksShort": "нед.",
+      "months": "месяцев",
+      "monthsShort": "мес.",
+      "years": "лет",
+      "yearsShort": "г."
+    }
   },
   "petTypes": {
     "DOG": "Собака",
