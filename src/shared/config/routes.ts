@@ -5,4 +5,5 @@ export const ROUTES = {
   petDetails: (id: string) => `/pets/${id}`,
   calendar: '/calendar',
   notifications: '/notifications',
+  faq: '/faq',
 } as const

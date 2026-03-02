@@ -25,7 +25,7 @@ export const AddWeightForm = ({ pet }: IAddWeightFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex h-34 flex-col gap-5 rounded-xl bg-white p-4 shadow-md md:flex-row'
+      className='flex flex-col gap-5 rounded-xl bg-white p-4 shadow-md md:h-34 md:flex-row'
     >
       <Input
         type={FIELDS_CONFIG.weight.type}
@@ -51,7 +51,7 @@ export const AddWeightForm = ({ pet }: IAddWeightFormProps) => {
         type='submit'
         label={isSubmitting ? '...' : tCommon('add')}
         disabled={isSubmitting}
-        className='h-12.5 self-center'
+        className='h-12.5 w-1/2 self-end md:w-auto md:self-center'
       />
     </form>
   )

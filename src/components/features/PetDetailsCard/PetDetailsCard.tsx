@@ -44,7 +44,7 @@ export const PetDetailsCard = ({ pet }: IPetDetailsCardProps) => {
           />
           <CardInfoBlock
             label={t('targetWeight.label')}
-            value={targetWeight!.toString()}
+            value={targetWeight ? targetWeight.toString() : '-'}
           />
           <CardInfoBlock label={t('birthday.age')} value={ageString} />
           <CardInfoBlock label={t('type.label')} value={t(`type.options.${type}`)} />

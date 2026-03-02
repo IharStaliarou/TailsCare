@@ -7,6 +7,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { PET_LS_KEY } from './pet.constants'
+import { TWeightRecordFormValues } from './pet.schema'
 import { IPet, IWeightHistoryPoint } from './pet.types'
 
 interface IPetState {
@@ -29,7 +30,7 @@ interface IPetState {
   clearStorage: () => void
   calculateStorageUsage: () => void
 
-  addWeightRecord: (petId: string, record: Omit<IWeightHistoryPoint, 'id'>) => void
+  addWeightRecord: (petId: string, record: TWeightRecordFormValues) => void
 
   _hasHydrated: boolean
   setHasHydrated: (state: boolean) => void
@@ -95,6 +96,23 @@ export const usePetStore = create<IPetState>()(
             const newRecord: IWeightHistoryPoint = {
               ...record,
               id: crypto.randomUUID(),
+            }
+
+            const isExistsRecord = pet.weightHistory?.some(
+              (item) => item.date === newRecord.date
+            )
+
+            if (isExistsRecord) {
+              const updatedExistsRecord = pet.weightHistory.map((point) =>
+                point.date === record.date ? { ...point, weight: record.weight } : point
+              )
+
+              return {
+                ...pet,
+                weightHistory: updatedExistsRecord,
+                currentWeight: updatedExistsRecord[0].weight,
+                updatedAt: new Date().toISOString(),
+              }
             }
 
             const updatedHistory = [...(pet.weightHistory || []), newRecord].sort(
