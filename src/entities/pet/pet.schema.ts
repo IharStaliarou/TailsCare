@@ -73,7 +73,13 @@ export const getPetSchema = (dictionary: TDictionary) =>
       ),
     currentWeight: z.preprocess(
       (val) => (val === '' || val == null ? undefined : Number(val)),
-      z.number().positive().optional()
+      z
+        .number({
+          error: dictionary.validations.common.notEmpty,
+        })
+        .positive(dictionary.validations.pet.weight.positive)
+        .min(0.5, dictionary.validations.pet.weight.min)
+        .max(100, dictionary.validations.pet.weight.max)
     ),
     targetWeight: z.preprocess(
       (val) => (val === '' || val == null ? undefined : Number(val)),
@@ -87,9 +93,9 @@ export const getWeightRecordSchema = (dictionary: TDictionary) =>
       (val) => (val === '' || val == null ? undefined : Number(val)),
       z
         .number({
-          error: dictionary.validations.common.invalidNumber,
+          error: dictionary.validations.common.notEmpty,
         })
-        .min(0.5, dictionary.validations.common.notEmpty)
+        .min(0.5, dictionary.validations.common.invalidNumber)
         .max(100, dictionary.validations.pet.weight.max)
         .positive(dictionary.validations.pet.weight.positive)
     ),

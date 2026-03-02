@@ -95,6 +95,16 @@
         }
       },
       "weightHistory": "История веса"
+    },
+    "weightHistory": {
+      "weight": {
+        "label": "Текущий вес (кг)",
+        "placeholder": "10"
+      },
+      "date": {
+        "label": "Дата",
+        "placeholder": "ДД.ММ.ГГГГ"
+      }
     }
   },
   "validations": {

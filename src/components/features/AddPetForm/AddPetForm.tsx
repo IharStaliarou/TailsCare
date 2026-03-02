@@ -118,7 +118,9 @@ export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) 
             value={currentWeight}
             label={tForm('currentWeight.label')}
             placeholder={tForm('currentWeight.placeholder')}
-            onChange={(e) => handleChange(FIELDS_CONFIG.currentWeight.id, e.target.value)}
+            onChange={(e) =>
+              handleChange(FIELDS_CONFIG.currentWeight.id, Number(e.target.value))
+            }
             error={errors.currentWeight}
             required={FIELDS_CONFIG.currentWeight.isRequired}
           />
@@ -129,7 +131,9 @@ export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) 
             value={targetWeight}
             label={tForm('targetWeight.label')}
             placeholder={tForm('targetWeight.placeholder')}
-            onChange={(e) => handleChange(FIELDS_CONFIG.targetWeight.id, e.target.value)}
+            onChange={(e) =>
+              handleChange(FIELDS_CONFIG.targetWeight.id, Number(e.target.value))
+            }
             error={errors.targetWeight}
             required={FIELDS_CONFIG.targetWeight.isRequired}
           />

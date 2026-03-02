@@ -95,6 +95,16 @@
         }
       },
       "weightHistory": "Weight history"
+    },
+    "weightHistory": {
+      "weight": {
+        "label": "Current Weight (kg)",
+        "placeholder": "10"
+      },
+      "date": {
+        "label": "Date",
+        "placeholder": "MM.DD.YYYY"
+      }
     }
   },
   "validations": {

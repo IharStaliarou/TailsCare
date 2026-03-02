@@ -45,7 +45,7 @@ export const Input = ({
 
     onChange?.(e)
   }
-
+  // TODO: remove 0 for type=number in empty input
   return (
     <div className={clsx('flex w-full flex-col gap-1.5', containerClassName)}>
       {label && (
