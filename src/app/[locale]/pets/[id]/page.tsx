@@ -1,5 +1,6 @@
 'use client'
 
+import { AddWeightForm } from '@/components/features/AddWeightForm/AddWeightForm'
 import { PetDetailsCard } from '@/components/features/PetDetailsCard/PetDetailsCard'
 import { WeightHistory } from '@/components/features/PetDetailsCard/WeightHistory'
 import { AppButton } from '@/components/ui'
@@ -32,6 +33,7 @@ export default function PetDetailsPage() {
       />
 
       <PetDetailsCard pet={pet} />
+      <AddWeightForm pet={pet} />
       <WeightHistory />
     </section>
   )

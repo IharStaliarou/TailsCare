@@ -7,7 +7,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { PET_LS_KEY } from './pet.constants'
-import { IPet } from './pet.types'
+import { IPet, IWeightHistoryPoint } from './pet.types'
 
 interface IPetState {
   pets: IPet[]
@@ -28,6 +28,8 @@ interface IPetState {
   checkIsNameUnique: (name: string) => boolean
   clearStorage: () => void
   calculateStorageUsage: () => void
+
+  addWeightRecord: (petId: string, record: Omit<IWeightHistoryPoint, 'id'>) => void
 
   _hasHydrated: boolean
   setHasHydrated: (state: boolean) => void
@@ -81,6 +83,32 @@ export const usePetStore = create<IPetState>()(
         const usage = calculateUsagePercentage(currentBytes, LS_LIMIT_BYTES)
 
         set({ storageUsagePercent: Number(usage.toFixed(2)) })
+      },
+
+      addWeightRecord: (petId, record) => {
+        set((state) => ({
+          pets: state.pets.map((pet) => {
+            if (pet.id !== petId) {
+              return pet
+            }
+
+            const newRecord: IWeightHistoryPoint = {
+              ...record,
+              id: crypto.randomUUID(),
+            }
+
+            const updatedHistory = [...(pet.weightHistory || []), newRecord].sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+            )
+
+            return {
+              ...pet,
+              weightHistory: updatedHistory,
+              currentWeight: updatedHistory[0].weight,
+              updatedAt: new Date().toISOString(),
+            }
+          }),
+        }))
       },
 
       _hasHydrated: false,

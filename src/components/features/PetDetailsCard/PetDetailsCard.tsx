@@ -31,7 +31,9 @@ export const PetDetailsCard = ({ pet }: IPetDetailsCardProps) => {
       <div className='flex flex-col justify-between gap-4 md:col-span-2'>
         <div>
           <h1 className='text-4xl font-bold text-gray-900'>{name}</h1>
-          <p className='text-lg text-gray-500'>{breed}</p>
+          <p className='text-lg text-gray-500'>
+            {t('breed.label')}: {breed}
+          </p>
         </div>
 
         <div className='grid grid-cols-2 gap-4 sm:grid-cols-4'>
