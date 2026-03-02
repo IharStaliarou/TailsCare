@@ -81,4 +81,25 @@ export const getPetSchema = (dictionary: TDictionary) =>
     ),
   })
 
+export const getWeightRecordSchema = (dictionary: TDictionary) =>
+  z.object({
+    weight: z.preprocess(
+      (val) => (val === '' || val == null ? undefined : Number(val)),
+      z
+        .number({
+          error: dictionary.validations.common.invalidNumber,
+        })
+        .min(0.5, dictionary.validations.common.notEmpty)
+        .max(100, dictionary.validations.pet.weight.max)
+        .positive(dictionary.validations.pet.weight.positive)
+    ),
+    date: z
+      .string()
+      .min(1, dictionary.validations.common.notEmpty)
+      .refine((date) => new Date(date) <= new Date(), {
+        message: dictionary.validations.pet.birthday.notFuture,
+      }),
+  })
+
 export type TPetFormValues = z.infer<ReturnType<typeof getPetSchema>>
+export type TWeightRecordFormValues = z.infer<ReturnType<typeof getWeightRecordSchema>>
