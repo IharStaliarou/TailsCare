@@ -97,23 +97,10 @@
       "weightHistory": "Weight history"
     }
   },
-  "modals": {
-    "addPet": {
-      "label": "Add Pet"
-    },
-    "editPet": {
-      "label": "Pet editing"
-    },
-    "deletePet": {
-      "label": "Pet deletion",
-      "description": "Are you sure you want to delete Your pet {petName}?\nAll data about pet will be lost.",
-      "cancel": "Cancel",
-      "delete": "Delete"
-    }
-  },
   "validations": {
     "common": {
-      "notEmpty": "This field is required"
+      "notEmpty": "This field is required",
+      "invalidNumber": "Invalid number"
     },
     "pet": {
       "name": {
@@ -128,7 +115,26 @@
       "birthday": {
         "notFuture": "Birthday cannot be in the future"
       },
-      "currentWeight": "Please enter  weight"
+      "currentWeight": "Please enter  weight",
+      "weight": {
+        "min": "Weight must be at least 0.5 kg",
+        "max": "Weight must be at most 100 kg",
+        "positive": "Weight must be greater than 0"
+      }
+    }
+  },
+  "modals": {
+    "addPet": {
+      "label": "Add Pet"
+    },
+    "editPet": {
+      "label": "Pet editing"
+    },
+    "deletePet": {
+      "label": "Pet deletion",
+      "description": "Are you sure you want to delete Your pet {petName}?\nAll data about pet will be lost.",
+      "cancel": "Cancel",
+      "delete": "Delete"
     }
   },
   "addPetPage": {
