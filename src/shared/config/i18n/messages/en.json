@@ -129,7 +129,8 @@
       "weight": {
         "min": "Weight must be at least 0.5 kg",
         "max": "Weight must be at most 100 kg",
-        "positive": "Weight must be greater than 0"
+        "positive": "Weight must be greater than 0",
+        "notFuture": "Date cannot be in the future"
       }
     }
   },
@@ -167,6 +168,10 @@
       "monthsShort": "m.",
       "years": "years",
       "yearsShort": "y."
+    },
+    "chart": {
+      "noData": "No data yet",
+      "weight": "Weight (kg)"
     }
   },
   "petTypes": {

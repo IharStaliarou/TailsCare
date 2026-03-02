@@ -23,6 +23,13 @@ export const preparePetData = (
     id: crypto.randomUUID(),
     createdAt: now,
     updatedAt: now,
+    weightHistory: [
+      {
+        id: crypto.randomUUID(),
+        weight: validatedData.currentWeight,
+        date: now.split('T')[0],
+      },
+    ],
     avatar: typeof validatedData.avatar === 'string' ? validatedData.avatar : null,
   }
 

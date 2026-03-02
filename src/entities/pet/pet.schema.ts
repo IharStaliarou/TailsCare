@@ -102,9 +102,18 @@ export const getWeightRecordSchema = (dictionary: TDictionary) =>
     date: z
       .string()
       .min(1, dictionary.validations.common.notEmpty)
-      .refine((date) => new Date(date) <= new Date(), {
-        message: dictionary.validations.pet.birthday.notFuture,
-      }),
+      .refine(
+        (date) => {
+          const selectedDate = new Date(date)
+          const today = new Date()
+          today.setHours(0, 0, 0, 0)
+          selectedDate.setHours(0, 0, 0, 0)
+          return selectedDate <= today
+        },
+        {
+          message: dictionary.validations.pet.weight.notFuture,
+        }
+      ),
   })
 
 export type TPetFormValues = z.infer<ReturnType<typeof getPetSchema>>

@@ -2,6 +2,7 @@
 
 import { HelpIcon, UserIcon } from '@/components/icons'
 import { AppButton } from '@/components/ui'
+import { ROUTES } from '@/shared/config/routes'
 import { useUIStore } from '@/shared/store/useUiStore'
 
 export const MobileTopBar = () => {
@@ -18,7 +19,7 @@ export const MobileTopBar = () => {
         variant='icon'
         icon={<HelpIcon className='str h-10 w-10' />}
         className='md:hidden'
-        to='/faq'
+        to={ROUTES.faq}
       />
     </nav>
   )
