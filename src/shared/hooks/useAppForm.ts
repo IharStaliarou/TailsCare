@@ -49,6 +49,8 @@ export const useAppForm = <T extends Record<string, unknown>>({
     e.preventDefault()
     setIsSubmitting(true)
 
+    alert(JSON.stringify(formData))
+
     try {
       const validatedData = schema.parse(formData)
       await onSubmit(validatedData)

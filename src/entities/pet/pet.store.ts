@@ -93,9 +93,21 @@ export const usePetStore = create<IPetState>()(
               return pet
             }
 
+            // TODO: remove when server will be ready
+            const generateId = () => {
+              if (
+                typeof window !== 'undefined' &&
+                window.crypto &&
+                window.crypto.randomUUID
+              ) {
+                return window.crypto.randomUUID()
+              }
+              return Math.random().toString(36).substring(2, 15) + Date.now().toString(36)
+            }
+
             const newRecord: IWeightHistoryPoint = {
               ...record,
-              id: crypto.randomUUID(),
+              id: generateId(),
             }
 
             const isExistsRecord = pet.weightHistory?.some(

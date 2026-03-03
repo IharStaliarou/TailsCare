@@ -17,6 +17,7 @@ export interface IModalProps {
 
 export const Modal = ({ title, children, isOpen, onClose, className }: IModalProps) => {
   const contentRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -39,6 +40,8 @@ export const Modal = ({ title, children, isOpen, onClose, className }: IModalPro
 
   if (!isOpen) return null
 
+  const modalRoot = document.getElementById('modal-root') || document.body
+
   return createPortal(
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm'>
       <div
@@ -54,6 +57,6 @@ export const Modal = ({ title, children, isOpen, onClose, className }: IModalPro
         {children}
       </div>
     </div>,
-    document.body
+    modalRoot
   )
 }

@@ -43,6 +43,7 @@ export default async function LocaleLayout({
             <MobileSidebar />
             {children}
           </main>
+          <div id='modal-root'></div>
         </NextIntlClientProvider>
       </body>
     </html>

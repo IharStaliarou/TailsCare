@@ -1,3 +1,5 @@
+'use client'
+
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import { Link } from '@/shared/config/i18n'
@@ -12,6 +14,7 @@ export interface IAppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   to?: string
 }
 export const AppButton = ({
+  type = 'button',
   children,
   label,
   icon,
@@ -44,9 +47,15 @@ export const AppButton = ({
       : ['cursor-pointer', variantStyles[variant]]
   )
 
+  const content = (
+    <>
+      {icon} {label} {children}
+    </>
+  )
+
   const LinkButton = (
     <Link href={to!} className={`${buttonStyles} ${className}`}>
-      {icon} {label} {children}
+      {content}
     </Link>
   )
 
@@ -55,8 +64,8 @@ export const AppButton = ({
   }
 
   return (
-    <button onClick={onClick} className={`${buttonStyles} ${className}`}>
-      {icon} {label} {children}
+    <button type={type} onClick={onClick} className={`${buttonStyles} ${className}`}>
+      {content}
     </button>
   )
 }

@@ -20,7 +20,7 @@ interface IPetCardProps {
 export const PetCard = ({ pet }: IPetCardProps) => {
   const t = useTranslations('common')
 
-  const { id: petId, name, avatar, breed, currentWeight, type } = pet
+  const { id: petId, name, breed, currentWeight, type, avatar } = pet
   const { openEditModal, removePet } = usePetStore()
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
