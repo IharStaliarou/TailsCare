@@ -2,26 +2,14 @@
 
 import { usePetStore } from '@/entities/pet/pet.store'
 import { IPet } from '@/entities/pet/pet.types'
-import { ROUTES } from '@/shared/config/routes'
 import { useTranslations } from 'next-intl'
 
-import { AppButton } from '../ui'
-import { AddPetModal } from './Modals/AddPetModal'
-import { EditPetModal } from './Modals/EditPetModal'
 import { PetCard } from './PetCard'
 
 export const PetsList = () => {
   const t = useTranslations('petsPage')
 
-  const {
-    pets,
-    isAddPetModalOpen,
-    closeAddModal,
-    isEditModalOpen,
-    editingPetId,
-    closeEditModal,
-    _hasHydrated,
-  } = usePetStore()
+  const { pets, _hasHydrated } = usePetStore()
 
   // TODO: add skeleton loader
   if (!_hasHydrated) {
@@ -30,10 +18,9 @@ export const PetsList = () => {
 
   if (pets.length === 0) {
     return (
-      <div>
-        <h2 className='text-center text-4xl'>{t('noPets')}</h2>
-        <AppButton to={ROUTES.addPet} label='Add pet' />
-      </div>
+      <>
+        <h2 className='mt-5 text-center text-4xl'>{t('noPets')}</h2>
+      </>
     )
   }
 
@@ -42,12 +29,6 @@ export const PetsList = () => {
       {pets.map((pet: IPet) => (
         <PetCard key={pet.id} pet={pet} />
       ))}
-      <AddPetModal isAddPetModalOpen={isAddPetModalOpen} onClose={closeAddModal} />
-      <EditPetModal
-        editPetId={editingPetId}
-        isEditModalOpen={isEditModalOpen}
-        onClose={closeEditModal}
-      />
     </ul>
   )
 }

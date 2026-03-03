@@ -7,34 +7,27 @@ import { useTranslations } from 'next-intl'
 import { AddPetForm } from '../AddPetForm/AddPetForm'
 
 interface IEditPetModalProps {
-  editPetId: string | null
-  isEditModalOpen: boolean
-  onClose: () => void
   className?: string
 }
 
-export const EditPetModal = ({
-  editPetId,
-  isEditModalOpen,
-  onClose,
-  className,
-}: IEditPetModalProps) => {
+export const EditPetModal = ({ className }: IEditPetModalProps) => {
   const t = useTranslations('modals.editPet')
-  const { pets } = usePetStore()
-
-  const petToEdit = pets.find((pet) => pet.id === editPetId)
+  const { isEditModalOpen, closeEditModal, editingPetId } = usePetStore()
+  const petToEdit = usePetStore((state) =>
+    state.pets.find((pet) => pet.id === editingPetId)
+  )
 
   if (!petToEdit) return null
 
   return (
     <Modal
       isOpen={isEditModalOpen}
-      onClose={onClose}
+      onClose={closeEditModal}
       title={t('label')}
       className={className}
     >
       <div className='max-h-[80vh] overflow-y-auto px-1'>
-        <AddPetForm initialPetData={petToEdit} onAfterSubmit={onClose} />
+        <AddPetForm initialPetData={petToEdit} onAfterSubmit={closeEditModal} />
       </div>
     </Modal>
   )

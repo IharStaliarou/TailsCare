@@ -37,6 +37,7 @@ export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) 
   } = formData
 
   const { genderOptions, activityOptions, typeOptions } = usePetOptions()
+
   return (
     <form onSubmit={handleSubmit} className='grid gap-5 rounded-2xl pb-5 md:grid-cols-2'>
       <ImageUploader
@@ -141,9 +142,9 @@ export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) 
 
         <div className='flex gap-4 pt-4'>
           <AppButton
-            type='submit'
             variant='outline'
             label={tCommon('cancel')}
+            onClick={onAfterSubmit}
             className='w-1/2'
           />
           <AppButton

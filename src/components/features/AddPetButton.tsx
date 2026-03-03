@@ -9,7 +9,7 @@ import { AppButton } from '../ui'
 export const AddPetButton = () => {
   const t = useTranslations('common')
 
-  const { openAddPetModal } = usePetStore()
+  const { openAddPetModal, _hasHydrated } = usePetStore()
 
   return (
     <AppButton
@@ -17,6 +17,7 @@ export const AddPetButton = () => {
       icon={<PlusIcon className='w-4 stroke-2' />}
       onClick={openAddPetModal}
       className='max-w-fit self-end md:self-auto'
+      disabled={!_hasHydrated}
     />
   )
 }

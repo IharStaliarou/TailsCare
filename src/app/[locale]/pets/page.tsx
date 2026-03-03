@@ -1,6 +1,8 @@
 import { PetsList } from '@/components/features'
 import { AddPetButton } from '@/components/features/AddPetButton'
 import { LocalStorageVisualizer } from '@/components/features/LocalStorageVisualizer'
+import { AddPetModal } from '@/components/features/Modals/AddPetModal'
+import { EditPetModal } from '@/components/features/Modals/EditPetModal'
 
 export default async function PetsPage() {
   return (
@@ -10,6 +12,8 @@ export default async function PetsPage() {
         <AddPetButton />
       </div>
       <PetsList />
+      <AddPetModal />
+      <EditPetModal />
     </section>
   )
 }
