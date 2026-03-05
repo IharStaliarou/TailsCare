@@ -46,6 +46,7 @@ export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) 
         error={errors.avatar}
         value={avatar as string}
         onChange={(file) => handleChange('avatar', file)}
+        className='max-h-150'
       />
       <div>
         <div className='grid grid-cols-1 gap-4'>

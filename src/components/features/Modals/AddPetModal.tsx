@@ -13,7 +13,7 @@ export const AddPetModal = () => {
 
   return (
     <Modal isOpen={isAddPetModalOpen} onClose={closeAddModal} title={t('label')}>
-      <div className='max-h-[80vh] overflow-y-auto px-1'>
+      <div className='scrollbar-hide max-h-[80vh] overflow-scroll px-1'>
         <AddPetForm onAfterSubmit={closeAddModal} />
       </div>
     </Modal>
