@@ -45,8 +45,7 @@ export const AddPetForm = ({ initialPetData, onAfterSubmit }: IAddPetFormProps) 
         placeholder={tForm('avatar.placeholder', { formats: formatsString })}
         error={errors.avatar}
         value={avatar as string}
-        onChange={(file) => handleChange('avatar', file)}
-        className='max-h-150'
+        onChange={(file) => handleChange(FIELDS_CONFIG.avatar.id, file)}
       />
       <div>
         <div className='grid grid-cols-1 gap-4'>
