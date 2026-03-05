@@ -16,7 +16,7 @@ export const CameraIcon = ({ className }: IIconsProps) => {
         stroke='currentColor'
         strokeLinecap='round'
         strokeLinejoin='round'
-        strokeWidth='1.500000'
+        strokeWidth='0.500000'
       />
       <circle
         id='Ellipse 130'
@@ -26,7 +26,7 @@ export const CameraIcon = ({ className }: IIconsProps) => {
         stroke='currentColor'
         strokeLinecap='round'
         strokeLinejoin='round'
-        strokeWidth='1.500000'
+        strokeWidth='0.700000'
       />
     </svg>
   )

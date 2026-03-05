@@ -14,6 +14,7 @@ interface IImageUploaderProps {
   value?: string | null
   error?: string
   required?: boolean
+  className?: string
   onChange: (file: File | null) => void
 }
 
@@ -24,6 +25,7 @@ export function ImageUploader({
   onChange,
   value,
   error,
+  className,
 }: IImageUploaderProps) {
   const [preview, setPreview] = useState<string | null>(value || null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -48,12 +50,16 @@ export function ImageUploader({
 
   return (
     <div
-      className={clsx(`flex flex-col items-center gap-1.5`, !preview && 'md:pb-13.75')}
+      className={clsx(
+        `flex flex-col items-center gap-1.5`,
+        !preview && 'md:pb-13.75',
+        className
+      )}
     >
       <div
         onClick={() => fileInputRef.current?.click()}
         className={clsx(
-          'relative flex h-80 w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-all md:h-full',
+          'relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-all md:h-full',
           preview
             ? 'mb-2.5 border-none shadow-md'
             : 'hover:border-secondary border-gray-600',

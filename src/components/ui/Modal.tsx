@@ -46,7 +46,7 @@ export const Modal = ({ title, children, isOpen, onClose, className }: IModalPro
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm'>
       <div
         ref={contentRef}
-        className={clsx('w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl', className)}
+        className={clsx('rounded-2xl bg-white p-6 shadow-2xl', className)}
       >
         <div className='mb-4 flex items-center justify-between'>
           <h2 className='text-xl font-bold'>{title}</h2>

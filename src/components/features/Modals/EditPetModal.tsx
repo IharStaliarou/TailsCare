@@ -26,7 +26,7 @@ export const EditPetModal = ({ className }: IEditPetModalProps) => {
       title={t('label')}
       className={className}
     >
-      <div className='max-h-[80vh] overflow-y-auto px-1'>
+      <div className='scrollbar-hide max-h-[80vh] overflow-scroll px-1'>
         <AddPetForm initialPetData={petToEdit} onAfterSubmit={closeEditModal} />
       </div>
     </Modal>
