@@ -50,20 +50,17 @@ export function ImageUploader({
 
   return (
     <div
-      className={clsx(
-        `flex flex-col items-center gap-1.5`,
-        !preview && 'md:pb-13.75',
-        className
-      )}
+      className={clsx(`flex flex-col items-center gap-1.5`, !preview && 'md:pb-13.75')}
     >
       <div
         onClick={() => fileInputRef.current?.click()}
         className={clsx(
-          'relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-all md:h-full',
+          'relative flex h-150 w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-all md:h-full',
           preview
             ? 'mb-2.5 border-none shadow-md'
             : 'hover:border-secondary border-gray-600',
-          error && 'border-red-500'
+          error && 'border-red-500',
+          className
         )}
       >
         {preview ? (
