@@ -11,3 +11,12 @@ export interface ICalendarEvent {
   isCompleted: boolean
   createdAt: string
 }
+
+export interface IDayTile {
+  date: string
+  dayNumber: string
+  isToday: boolean
+  hasEvents: boolean
+  events: ICalendarEvent[]
+  type: 'square' | 'circle'
+}
