@@ -4,8 +4,13 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { CALENDAR_LS_KEY } from './calendar.constants'
 import { ICalendarEvent } from './calendar.types'
 
+// TODO: refactor
+
 export interface ICalendarStore {
   events: ICalendarEvent[]
+
+  _hasHydrated: boolean
+  setHasHydrated: (state: boolean) => void
 
   addEvent: (event: Omit<ICalendarEvent, 'id' | 'createdAt' | 'isCompleted'>) => void
   updateEvent: (id: string, data: Partial<ICalendarEvent>) => void
@@ -20,6 +25,9 @@ export const useCalendarStore = create<ICalendarStore>()(
   persist(
     (set, get) => ({
       events: [],
+
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
 
       addEvent: (eventData) => {
         const newEvent: ICalendarEvent = {
@@ -69,6 +77,9 @@ export const useCalendarStore = create<ICalendarStore>()(
     {
       name: CALENDAR_LS_KEY,
       storage: createJSONStorage(() => localStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      },
     }
   )
 )

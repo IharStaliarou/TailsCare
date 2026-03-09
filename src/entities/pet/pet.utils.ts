@@ -36,9 +36,19 @@ export const preparePetData = (
   return newPet
 }
 
-// TODO: remove any
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const formatAge = (birthday: string, t: any): string => {
+type AgeTranslateKey =
+  | 'days'
+  | 'daysShort'
+  | 'weeks'
+  | 'weeksShort'
+  | 'months'
+  | 'monthsShort'
+  | 'years'
+  | 'yearsShort'
+
+type AgeTranslateFn = (key: AgeTranslateKey) => string
+
+export const formatAge = (birthday: string, t: AgeTranslateFn): string => {
   const birthDate = new Date(birthday)
   const now = new Date()
 

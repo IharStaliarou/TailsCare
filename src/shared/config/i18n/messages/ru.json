@@ -187,5 +187,51 @@
   },
   "error": {
     "somethingError": "Что-то пошло не так! Попробуйте еще раз позже."
+  },
+  "calendar": {
+    "title": "Календарь заботы",
+    "subtitle": "Планы по уходу за вашими питомцами",
+    "noPlans": "Нет планов на этот день",
+    "types": {
+      "vet": "Ветеринар",
+      "medication": "Лекарства",
+      "feeding": "Кормление",
+      "walking": "Прогулка",
+      "other": "Другое"
+    },
+    "dayPage": {
+      "title": "Планы на {date}",
+      "addEvent": "Добавить план",
+      "empty": "На этот день ещё нет планов",
+      "timelineHint": "Нажмите «Добавить план», чтобы создать первое событие.",
+      "form": {
+        "title": {
+          "label": "Название плана",
+          "placeholder": "Визит к ветеринару"
+        },
+        "description": {
+          "label": "Описание",
+          "placeholder": "Дополнительные заметки"
+        },
+        "time": {
+          "label": "Время",
+          "placeholder": "ЧЧ:ММ"
+        },
+        "type": {
+          "label": "Тип события"
+        },
+        "pet": {
+          "label": "Питомец"
+        }
+      },
+      "modals": {
+        "addTitle": "Новый план",
+        "editTitle": "Редактировать план",
+        "deleteTitle": "Удалить план",
+        "deleteDescription": "Удалить план «{title}»?",
+        "deleteConfirm": "Удалить",
+        "deleteCancel": "Отмена"
+      }
+    }
   }
 }
