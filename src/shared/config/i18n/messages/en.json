@@ -187,5 +187,51 @@
   },
   "error": {
     "somethingError": "Something went wrong! Please try again later."
+  },
+  "calendar": {
+    "title": "Care calendar",
+    "subtitle": "Plans for taking care of your pets",
+    "noPlans": "No plans for this day",
+    "types": {
+      "vet": "Vet visit",
+      "medication": "Medication",
+      "feeding": "Feeding",
+      "walking": "Walk",
+      "other": "Other"
+    },
+    "dayPage": {
+      "title": "Plans for {date}",
+      "addEvent": "Add plan",
+      "empty": "There are no plans for this day yet",
+      "timelineHint": "Click “Add plan” to create the first event.",
+      "form": {
+        "title": {
+          "label": "Plan title",
+          "placeholder": "Vet appointment"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Additional notes"
+        },
+        "time": {
+          "label": "Time",
+          "placeholder": "HH:MM"
+        },
+        "type": {
+          "label": "Event type"
+        },
+        "pet": {
+          "label": "Pet"
+        }
+      },
+      "modals": {
+        "addTitle": "New plan",
+        "editTitle": "Edit plan",
+        "deleteTitle": "Delete plan",
+        "deleteDescription": "Delete plan “{title}”?",
+        "deleteConfirm": "Delete",
+        "deleteCancel": "Cancel"
+      }
+    }
   }
 }
