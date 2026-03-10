@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect } from 'react'
 
-import { PlusIcon } from '@/components/icons'
+import { PlusIcon } from '@/components/ui/icons'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { createPortal } from 'react-dom'

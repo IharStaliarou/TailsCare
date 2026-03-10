@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-import { DropdownArrowIcon } from '@/components/icons'
+import { DropdownArrowIcon } from '@/components/ui/icons'
 import clsx from 'clsx'
 
 export interface ISelectOption {

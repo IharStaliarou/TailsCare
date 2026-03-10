@@ -1,7 +1,7 @@
 'use client'
 
-import { HelpIcon, UserIcon } from '@/components/icons'
 import { AppButton } from '@/components/ui'
+import { HelpIcon, UserIcon } from '@/components/ui/icons'
 import { ROUTES } from '@/shared/config/routes'
 import { useUIStore } from '@/shared/store/useUiStore'
 
