@@ -39,7 +39,7 @@ export default async function LocaleLayout({
       <body className={`flex min-h-screen flex-col bg-gray-100 ${nunito.variable}`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
-          <main className='mx-auto mt-20 mb-14 flex w-full max-w-360 flex-col justify-center px-4 md:mb-0 md:px-6 md:py-9.5 2xl:px-17'>
+          <main className='mx-auto mt-20 mb-14 flex w-full max-w-360 flex-col justify-center px-4 md:mb-0 md:px-6 md:py-9.5 2xl:px-6'>
             <MobileSidebar />
             {children}
           </main>

@@ -5,8 +5,8 @@ import { ChangeEvent, useRef, useState } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 
-import { CameraIcon, PlusIcon } from '../icons'
 import { AppButton } from '../ui/AppButton'
+import { CameraIcon, PlusIcon } from './icons'
 
 interface IImageUploaderProps {
   label: string

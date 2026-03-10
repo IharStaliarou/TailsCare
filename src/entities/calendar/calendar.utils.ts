@@ -26,6 +26,30 @@ export const generateCalendarDays = (
     0
   ).getDate()
 
+  const startWeekday = monthStart.getDay()
+  if (startWeekday > 0) {
+    const prevMonthEnd = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 0)
+    const prevMonthDays = prevMonthEnd.getDate()
+    for (let i = startWeekday - 1; i >= 0; i--) {
+      const current = new Date(prevMonthEnd)
+      current.setDate(prevMonthDays - i)
+      current.setHours(0, 0, 0, 0)
+
+      const dateStr = formatLocalDate(current)
+      const dayEvents = allEvents.filter((e) => e.date === dateStr)
+
+      days.push({
+        date: dateStr,
+        dayNumber: current.getDate().toString(),
+        isToday: current.getTime() === today.getTime(),
+        hasEvents: dayEvents.length > 0,
+        events: dayEvents,
+        type: 'square',
+        inCurrentMonth: false,
+      })
+    }
+  }
+
   for (let day = 1; day <= daysInMonth; day++) {
     const current = new Date(monthStart)
     current.setDate(day)
@@ -41,7 +65,29 @@ export const generateCalendarDays = (
       hasEvents: dayEvents.length > 0,
       events: dayEvents,
       type: 'square',
+      inCurrentMonth: true,
     })
+  }
+
+  const remainder = (7 - (days.length % 7)) % 7
+  if (remainder > 0) {
+    for (let i = 1; i <= remainder; i++) {
+      const current = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, i)
+      current.setHours(0, 0, 0, 0)
+
+      const dateStr = formatLocalDate(current)
+      const dayEvents = allEvents.filter((e) => e.date === dateStr)
+
+      days.push({
+        date: dateStr,
+        dayNumber: current.getDate().toString(),
+        isToday: current.getTime() === today.getTime(),
+        hasEvents: dayEvents.length > 0,
+        events: dayEvents,
+        type: 'square',
+        inCurrentMonth: false,
+      })
+    }
   }
 
   return days
@@ -81,7 +127,6 @@ export const DateUtils = {
   },
 } as const
 
-// utils/calendar.utils.ts
 export const CalendarUtils = {
   createWeekDayFormatter(locale: string) {
     return new Intl.DateTimeFormat(locale, { weekday: 'short' })

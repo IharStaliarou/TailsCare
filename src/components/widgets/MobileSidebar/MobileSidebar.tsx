@@ -3,8 +3,8 @@
 import { useRef } from 'react'
 
 import { AuthActionsBlock, LanguageSwitcher } from '@/components/features'
-import { PlusIcon } from '@/components/icons'
 import { AppButton, Divider } from '@/components/ui'
+import { PlusIcon } from '@/components/ui/icons'
 import { MOCK_USER } from '@/entities/user/types'
 import { Link } from '@/shared/config/i18n'
 import { useClickOutside } from '@/shared/hooks/useClickOutside'

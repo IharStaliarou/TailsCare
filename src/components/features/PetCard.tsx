@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-import { EditIcon, TrashIcon } from '@/components/icons'
 import { AppButton } from '@/components/ui'
+import { EditIcon, TrashIcon } from '@/components/ui/icons'
 import { DEFAULT_PET_AVATAR } from '@/entities/pet/pet.constants'
 import { usePetStore } from '@/entities/pet/pet.store'
 import { IPet } from '@/entities/pet/pet.types'

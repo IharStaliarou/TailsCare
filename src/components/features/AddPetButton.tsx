@@ -3,8 +3,8 @@
 import { usePetStore } from '@/entities/pet/pet.store'
 import { useTranslations } from 'next-intl'
 
-import { PlusIcon } from '../icons'
 import { AppButton } from '../ui'
+import { PlusIcon } from '../ui/icons'
 
 export const AddPetButton = () => {
   const t = useTranslations('common')

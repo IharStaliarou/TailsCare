@@ -20,6 +20,7 @@ export interface IDayTile {
   hasEvents: boolean
   events: ICalendarEvent[]
   type: 'square' | 'circle'
+  inCurrentMonth: boolean
 }
 
 export interface IWeekRange {

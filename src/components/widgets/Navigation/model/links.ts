@@ -1,4 +1,4 @@
-import { BellIcon, CalendarIcon, EarthIcon, HomeIcon } from '@/components/icons'
+import { BellIcon, CalendarIcon, EarthIcon, HomeIcon } from '@/components/ui/icons'
 import { ROUTES } from '@/shared/config/routes'
 
 export const NAVIGATION_LINKS = {

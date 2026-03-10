@@ -25,7 +25,8 @@ export const AppButton = ({
 
   onClick,
 }: IAppButtonProps) => {
-  const baseStyles = `rounded-lg flex justify-center  items-center transition duration-300 gap-1.5 ${className?.includes('h-') ? '' : 'h-full'}`
+  const baseStyles = `flex justify-center  items-center transition duration-300 gap-1.5 ${className?.includes('h-') ? '' : 'h-full'} ${className?.includes('rounded-') ? '' : 'rounded-lg'}`
+
   const variantStyles = {
     primary:
       'bg-primary hover:bg-primary-hover active:bg-primary-active active:text-primary',
