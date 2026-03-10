@@ -69,7 +69,7 @@ export const CalendarDesktop = () => {
             <div
               key={day}
               className={`text-center text-[10px] font-semibold tracking-tight uppercase ${
-                isWeekend(index) ? COLORS_CONFIG.RED[500] : COLORS_CONFIG.GRAY[400]
+                isWeekend(index) ? COLORS_CONFIG.RED[600] : COLORS_CONFIG.GRAY[900]
               }`}
             >
               {day}
@@ -108,7 +108,7 @@ export const CalendarDesktop = () => {
                 return `border ${COLORS_CONFIG.RED[500]} ${COLORS_CONFIG.RED[600]}`
               }
               if (day.isToday) {
-                return `border ${COLORS_CONFIG.INDIGO[500]} ${COLORS_CONFIG.INDIGO[600]}`
+                return ` bg-secondary text-white`
               }
               if (isWeekendDay) {
                 return `${COLORS_CONFIG.RED[500]} hover:${COLORS_CONFIG.RED[50]}`
@@ -183,7 +183,7 @@ export const CalendarDesktop = () => {
                         : isToday && isWeekendDay
                           ? `border ${COLORS_CONFIG.RED[500]} ${COLORS_CONFIG.RED[600]}`
                           : isToday
-                            ? `border ${COLORS_CONFIG.INDIGO[500]} ${COLORS_CONFIG.INDIGO[600]}`
+                            ? `bg-secondary text-white`
                             : isWeekendDay
                               ? COLORS_CONFIG.RED[500]
                               : COLORS_CONFIG.GRAY[800]
