@@ -12,19 +12,17 @@ import { TDictionary } from '@/shared/config/i18n'
 import { useAppForm } from '@/shared/hooks/useAppForm'
 import { useMessages, useTranslations } from 'next-intl'
 
+import { useCalendarViewModel } from './useCalendarViewModel'
+
 // TODO: refactor
 
-interface ICalendarEventFormProps {
-  initialValues?: Partial<TCalendarEventFormValues> & { id?: string }
-  onSuccess?: () => void
-  submitLabel?: string
-}
+export const CalendarEventForm = () => {
+  const t = useTranslations('dayPage.modals')
+  const {
+    selectedDateString,
 
-export const CalendarEventForm = ({
-  initialValues,
-  onSuccess,
-  submitLabel,
-}: ICalendarEventFormProps) => {
+    setIsCreateModalOpen,
+  } = useCalendarViewModel()
   const dictionary = useMessages() as TDictionary
   const tCalendar = useTranslations('calendar')
   const tCommon = useTranslations('common')
@@ -40,6 +38,10 @@ export const CalendarEventForm = ({
     time: '09:00',
     petId: pets[0]?.id ?? '',
   }
+
+  const initialValues = useCalendarStore((state) =>
+    state.events.find((event) => event.date === selectedDateString)
+  )
 
   const isEditMode = !!initialValues
 
@@ -59,7 +61,7 @@ export const CalendarEventForm = ({
           addEvent(values)
         }
 
-        if (onSuccess) onSuccess()
+        setIsCreateModalOpen(false)
       },
     })
 
@@ -139,7 +141,7 @@ export const CalendarEventForm = ({
         <AppButton
           type='submit'
           className='w-full'
-          label={isSubmitting ? '...' : (submitLabel ?? tCommon('save'))}
+          label={isSubmitting ? '...' : (t('addTitle') ?? tCommon('save'))}
           disabled={isSubmitting || pets.length === 0}
         />
       </div>

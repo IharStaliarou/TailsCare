@@ -31,7 +31,7 @@ export const AppButton = ({
     primary:
       'bg-primary hover:bg-primary-hover active:bg-primary-active active:text-primary',
     secondary:
-      'bg-secondary hover:bg-secondary-hover active:bg-secondary-active active:text-secondary',
+      'bg-secondary hover:bg-secondary-hover active:bg-secondary-active text-gray-100 active:text-secondary',
     outline:
       'hover:bg-gray-100 border border-gray-300 active:bg-gray-400 active:text-gray-100 active:border-gray-400',
     icon: '',
