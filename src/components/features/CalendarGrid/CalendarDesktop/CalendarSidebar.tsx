@@ -12,12 +12,8 @@ export const CalendarSidebar = () => {
 
   const {
     petsLength,
-    goToToday,
-    handlePrevMonth,
-    handleNextMonth,
+
     setIsCreateModalOpen,
-    today,
-    isTodaySelected,
   } = useCalendarViewModel()
 
   return (
@@ -29,12 +25,7 @@ export const CalendarSidebar = () => {
         onClick={() => setIsCreateModalOpen(true)}
         disabled={petsLength === 0}
       />
-      <CalendarNavButtons
-        onPrev={handlePrevMonth}
-        onNext={handleNextMonth}
-        onToday={() => goToToday(today)}
-        isTodaySelected={isTodaySelected}
-      />
+      <CalendarNavButtons />
 
       <DatePicker />
     </aside>
