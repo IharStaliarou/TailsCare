@@ -1,12 +1,12 @@
 'use client'
 
 import { AppButton } from '@/components/ui'
+import { useTranslations } from 'next-intl'
 
 interface ICalendarNavButtonsProps {
   onPrev: () => void
   onNext: () => void
   onToday: () => void
-  todayLabel: string
   isTodaySelected: boolean
 }
 
@@ -14,9 +14,9 @@ export const CalendarNavButtons = ({
   onPrev,
   onNext,
   onToday,
-  todayLabel,
   isTodaySelected,
 }: ICalendarNavButtonsProps) => {
+  const t = useTranslations('calendar')
   const variant = isTodaySelected ? 'secondary' : 'outline'
 
   return (
@@ -29,7 +29,7 @@ export const CalendarNavButtons = ({
       />
       <AppButton
         variant={variant}
-        label={todayLabel}
+        label={t('todayButton')}
         onClick={onToday}
         className={'flex-1 rounded-full'}
       />

@@ -2,7 +2,6 @@
 
 import { useMemo } from 'react'
 
-import { UI_TEXTS } from '@/entities/calendar/calendar.constants'
 import { useCalendarStore } from '@/entities/calendar/calendar.store'
 import { ICalendarEvent, IDayTile } from '@/entities/calendar/calendar.types'
 import { useCalendarUIStore } from '@/entities/calendar/calendar.ui.store'
@@ -15,11 +14,10 @@ import {
 import { useCalendarEvents } from '@/entities/calendar/hooks/useCalendarEvents'
 import { useWeekRange } from '@/entities/calendar/hooks/useWeekRange'
 import { usePetStore } from '@/entities/pet/pet.store'
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
 
 export interface ICalendarViewModel {
-  t: ReturnType<typeof useTranslations>
   locale: string
 
   today: Date
@@ -35,7 +33,6 @@ export interface ICalendarViewModel {
   isCreateModalOpen: boolean
   selectedDateString: string
   isTodaySelected: boolean
-  todayLabel: string
 
   handlePrevMonth: () => void
   handleNextMonth: () => void
@@ -48,7 +45,6 @@ export interface ICalendarViewModel {
 export const useCalendarViewModel = (): ICalendarViewModel => {
   const router = useRouter()
   const locale = useLocale()
-  const t = useTranslations('calendar')
 
   const events = useCalendarStore((s) => s.events)
   const petsLength = usePetStore((s) => s.pets.length)
@@ -108,10 +104,8 @@ export const useCalendarViewModel = (): ICalendarViewModel => {
   }
 
   const isTodaySelected = selectedDateString === formatLocalDate(today)
-  const todayLabel = UI_TEXTS.TODAY_BUTTON
 
   return {
-    t,
     locale,
     today,
     selectedDate,
@@ -126,7 +120,6 @@ export const useCalendarViewModel = (): ICalendarViewModel => {
     isCreateModalOpen,
     selectedDateString,
     isTodaySelected,
-    todayLabel,
     handlePrevMonth,
     handleNextMonth,
     handleSelectDate,

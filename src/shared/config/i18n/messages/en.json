@@ -199,6 +199,7 @@
       "walking": "Walk",
       "other": "Other"
     },
+    "todayButton": "Today",
     "dayPage": {
       "title": "Plans for {date}",
       "addEvent": "Add plan",

@@ -199,6 +199,7 @@
       "walking": "Прогулка",
       "other": "Другое"
     },
+    "todayButton": "Сегодня",
     "dayPage": {
       "title": "Планы на {date}",
       "addEvent": "Добавить план",
