@@ -1,20 +1,15 @@
+'use client'
+
 import { Fragment } from 'react'
 
 import { CALENDAR_CONFIG } from '@/entities/calendar/calendar.constants'
 import { ICalendarEvent } from '@/entities/calendar/calendar.types'
 import { formatLocalDate } from '@/entities/calendar/calendar.utils'
 
-interface ICalendarWeekGridProps {
-  weekDates: Date[]
-  eventsByDayAndHour: Map<string, ICalendarEvent[]>
-  goToDay: (date: string) => void
-}
+import { useCalendarViewModel } from '../useCalendarViewModel'
 
-export const CalendarWeekGrid = ({
-  weekDates,
-  eventsByDayAndHour,
-  goToDay,
-}: ICalendarWeekGridProps) => {
+export const CalendarWeekGrid = () => {
+  const { weekDates, eventsByDayAndHour, goToDay } = useCalendarViewModel()
   const padHour = (hour: number) => hour.toString().padStart(2, '0')
 
   return (

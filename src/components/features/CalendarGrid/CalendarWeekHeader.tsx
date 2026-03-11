@@ -1,3 +1,5 @@
+'use client'
+
 import { COLORS_CONFIG, UI_TEXTS } from '@/entities/calendar/calendar.constants'
 import {
   CalendarUtils,
@@ -5,21 +7,10 @@ import {
   isWeekend,
 } from '@/entities/calendar/calendar.utils'
 
-interface ICalendarWeekHeaderProps {
-  weekDates: Date[]
-  locale: string
-  selectedDateString: string
-  today: Date
-  goToDay: (date: string) => void
-}
+import { useCalendarViewModel } from '../useCalendarViewModel'
 
-export const CalendarWeekHeader = ({
-  weekDates,
-  locale,
-  selectedDateString,
-  today,
-  goToDay,
-}: ICalendarWeekHeaderProps) => {
+export const CalendarWeekHeader = () => {
+  const { locale, weekDates, selectedDateString, goToDay, today } = useCalendarViewModel()
   return (
     <div className='grid grid-cols-[56px_repeat(7,minmax(0,1fr))] border-b border-gray-100 bg-gray-50/80 text-[11px] font-semibold text-gray-500'>
       <div className='px-2 py-2 text-right text-[10px] text-gray-400'>

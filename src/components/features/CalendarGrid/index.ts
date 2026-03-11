@@ -1,6 +1,6 @@
 export { CalendarGrid } from './CalendarGrid'
-export { CalendarDesktop } from './CalendarDesktop'
+export { CalendarDesktop } from './CalendarDesktop/CalendarDesktop'
 export { CalendarMobile } from './CalendarMobile/CalendarMobile'
-export { CalendarSidebar } from './CalendarSidebar'
+export { CalendarSidebar } from './CalendarDesktop/CalendarSidebar'
 export { CalendarWeekHeader } from './CalendarWeekHeader'
 export { CalendarWeekGrid } from './CalendarWeekGrid'
