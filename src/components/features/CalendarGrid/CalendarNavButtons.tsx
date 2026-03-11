@@ -3,20 +3,14 @@
 import { AppButton } from '@/components/ui'
 import { useTranslations } from 'next-intl'
 
-interface ICalendarNavButtonsProps {
-  onPrev: () => void
-  onNext: () => void
-  onToday: () => void
-  isTodaySelected: boolean
-}
+import { useCalendarViewModel } from '../useCalendarViewModel'
 
-export const CalendarNavButtons = ({
-  onPrev,
-  onNext,
-  onToday,
-  isTodaySelected,
-}: ICalendarNavButtonsProps) => {
+export const CalendarNavButtons = () => {
   const t = useTranslations('calendar')
+
+  const { handlePrevMonth, handleNextMonth, goToToday, today, isTodaySelected } =
+    useCalendarViewModel()
+
   const variant = isTodaySelected ? 'secondary' : 'outline'
 
   return (
@@ -24,19 +18,19 @@ export const CalendarNavButtons = ({
       <AppButton
         variant='outline'
         label='‹'
-        onClick={onPrev}
+        onClick={handlePrevMonth}
         className='w-11.25 rounded-full'
       />
       <AppButton
         variant={variant}
         label={t('todayButton')}
-        onClick={onToday}
+        onClick={() => goToToday(today)}
         className={'flex-1 rounded-full'}
       />
       <AppButton
         variant='outline'
         label='›'
-        onClick={onNext}
+        onClick={handleNextMonth}
         className='w-11.25 rounded-full'
       />
     </div>
