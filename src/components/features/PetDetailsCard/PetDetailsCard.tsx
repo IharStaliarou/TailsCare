@@ -1,3 +1,5 @@
+'use client'
+
 import { DEFAULT_PET_AVATAR } from '@/entities/pet/pet.constants'
 import { usePetStore } from '@/entities/pet/pet.store'
 import { formatAge } from '@/entities/pet/pet.utils'
