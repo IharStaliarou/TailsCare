@@ -32,8 +32,8 @@ export default function PetDetailsPage() {
         title='Back'
       />
 
-      <PetDetailsCard pet={pet} />
-      <AddWeightForm pet={pet} />
+      <PetDetailsCard />
+      <AddWeightForm />
       <WeightHistory />
     </section>
   )
