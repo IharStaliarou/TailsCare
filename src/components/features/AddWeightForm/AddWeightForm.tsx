@@ -1,24 +1,23 @@
 'use client'
 
 import { AppButton, Input } from '@/components/ui'
-import { IPet } from '@/entities/pet/pet.types'
+import { usePetStore } from '@/entities/pet/pet.store'
 import { TDictionary } from '@/shared/config/i18n'
 import { useMessages, useTranslations } from 'next-intl'
+import { useParams } from 'next/navigation'
 
 import { FIELDS_CONFIG, useWeightForm } from './model'
 
-interface IAddWeightFormProps {
-  pet: IPet
-}
-
-export const AddWeightForm = ({ pet }: IAddWeightFormProps) => {
+export const AddWeightForm = () => {
   const dictionary = useMessages() as TDictionary
   const t = useTranslations('forms.weightHistory')
   const tCommon = useTranslations('common')
 
-  const { id: petId } = pet
+  const { id } = useParams()
+  const pet = usePetStore((state) => state.pets.find((pet) => pet.id === id))
+
   const { formData, errors, isSubmitting, handleChange, handleSubmit } = useWeightForm(
-    petId,
+    pet!.id,
     dictionary
   )
 

@@ -1,18 +1,20 @@
 import { DEFAULT_PET_AVATAR } from '@/entities/pet/pet.constants'
-import { IPet } from '@/entities/pet/pet.types'
+import { usePetStore } from '@/entities/pet/pet.store'
 import { formatAge } from '@/entities/pet/pet.utils'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useParams } from 'next/navigation'
 
 import { CardInfoBlock } from './CardInfoBlock'
 
-interface IPetDetailsCardProps {
-  pet: IPet
-}
-
-export const PetDetailsCard = ({ pet }: IPetDetailsCardProps) => {
+export const PetDetailsCard = () => {
   const t = useTranslations('forms.pet')
   const tAge = useTranslations('petDetailsPage.age')
+
+  const { id } = useParams()
+  const pet = usePetStore((state) => state.pets.find((pet) => pet.id === id))
+
+  if (!pet) return <p className='text-sm'>{t('notFound')}</p>
 
   const { name, avatar, type, breed, currentWeight, targetWeight, birthday } = pet
   const ageString = formatAge(birthday, tAge)
@@ -37,10 +39,9 @@ export const PetDetailsCard = ({ pet }: IPetDetailsCardProps) => {
         </div>
 
         <div className='grid grid-cols-2 gap-4 sm:grid-cols-4'>
-          {/* TODO: resolve weight type conflict */}
           <CardInfoBlock
             label={t('currentWeight.label')}
-            value={currentWeight!.toString()}
+            value={currentWeight.toString()}
           />
           <CardInfoBlock
             label={t('targetWeight.label')}
