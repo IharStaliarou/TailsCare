@@ -7,6 +7,8 @@ import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 
+import { AppButton } from './AppButton'
+
 export interface IModalProps {
   title: string
   children: ReactNode
@@ -81,13 +83,9 @@ export const Modal = ({ title, children, isOpen, onClose, className }: IModalPro
                 <h2 className='text-2xl font-extrabold tracking-tight text-gray-900'>
                   {title}
                 </h2>
-                {/* TODO: use app button */}
-                <button
-                  onClick={onClose}
-                  className='rounded-full bg-gray-100 p-2 transition-colors hover:bg-gray-200'
-                >
-                  <PlusIcon className='h-6 w-6 rotate-45 text-gray-600' />
-                </button>
+                <AppButton onClick={onClose} className='rounded-full'>
+                  <PlusIcon className='h-6 w-6 rotate-45 text-white' />
+                </AppButton>
               </div>
 
               <div className='scrollbar-hide flex-1 overflow-y-auto pb-10'>
