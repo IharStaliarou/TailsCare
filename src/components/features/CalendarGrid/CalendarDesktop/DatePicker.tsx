@@ -45,8 +45,14 @@ export const DatePicker = () => {
           onClick={() => handleSelectDate(dateObj)}
           className='flex items-center justify-center rounded-full p-1 text-xs font-medium'
         >
-          <div className='flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold text-gray-300'>
+          <div className='relative flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold text-gray-300'>
             {day.dayNumber}
+            {day.hasEvents && (
+              <span className='absolute -top-1 -right-1 flex h-2 w-2'>
+                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75'></span>
+                <span className='bg-secondary-active relative inline-flex h-2 w-2 rounded-full'></span>
+              </span>
+            )}
           </div>
         </button>
       )
@@ -76,9 +82,15 @@ export const DatePicker = () => {
         className='flex items-center justify-center rounded-full p-1 text-xs font-medium'
       >
         <div
-          className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${buttonStyles}`}
+          className={`relative flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${buttonStyles}`}
         >
           {day.dayNumber}
+          {day.hasEvents && (
+            <span className='absolute -top-1 -right-1 flex h-2 w-2'>
+              <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75'></span>
+              <span className='bg-secondary-active relative inline-flex h-2 w-2 rounded-full'></span>
+            </span>
+          )}
         </div>
       </button>
     )

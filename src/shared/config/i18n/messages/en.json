@@ -227,6 +227,7 @@
       },
       "modals": {
         "addTitle": "New plan",
+        "addConfirm": "Add",
         "editTitle": "Edit plan",
         "deleteTitle": "Delete plan",
         "deleteDescription": "Delete plan “{title}”?",

@@ -175,11 +175,7 @@ export default function CalendarDayPage() {
         onClose={handleCloseModal}
         title={tCalendar('dayPage.modals.addTitle')}
       >
-        <CalendarEventForm
-          initialValues={{ date }}
-          onSuccess={handleCloseModal}
-          submitLabel={tCalendar('dayPage.modals.addTitle')}
-        />
+        <CalendarEventForm />
       </Modal>
 
       <Modal
@@ -187,13 +183,7 @@ export default function CalendarDayPage() {
         onClose={handleCloseModal}
         title={tCalendar('dayPage.modals.editTitle')}
       >
-        {modalState.event && (
-          <CalendarEventForm
-            initialValues={modalState.event}
-            onSuccess={handleCloseModal}
-            submitLabel={tCalendar('dayPage.modals.editTitle')}
-          />
-        )}
+        {modalState.event && <CalendarEventForm />}
       </Modal>
 
       <Modal

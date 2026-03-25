@@ -33,9 +33,16 @@ export const Month = () => {
             key={date}
             label={dayNumber}
             onClick={() => goToDay(date)}
-            className='h-20'
+            className='relative h-20'
             variant={outside ? 'outline' : 'secondary'}
-          />
+          >
+            {day.hasEvents && (
+              <span className='absolute top-1 right-1 flex h-2 w-2'>
+                <span className='bg-secondary-active absolute inline-flex h-full w-full animate-ping rounded-full opacity-75'></span>
+                <span className='bg-secondary-active relative inline-flex h-2 w-2 rounded-full'></span>
+              </span>
+            )}
+          </AppButton>
         )
       })}
     </div>

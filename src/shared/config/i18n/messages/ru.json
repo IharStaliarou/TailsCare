@@ -227,6 +227,7 @@
       },
       "modals": {
         "addTitle": "Новый план",
+        "addConfirm": "Добавить",
         "editTitle": "Редактировать план",
         "deleteTitle": "Удалить план",
         "deleteDescription": "Удалить план «{title}»?",

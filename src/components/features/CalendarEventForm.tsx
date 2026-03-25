@@ -17,13 +17,13 @@ import { useCalendarViewModel } from './useCalendarViewModel'
 // TODO: refactor
 
 export const CalendarEventForm = () => {
-  const t = useTranslations('dayPage.modals')
   const {
     selectedDateString,
 
     setIsCreateModalOpen,
   } = useCalendarViewModel()
   const dictionary = useMessages() as TDictionary
+
   const tCalendar = useTranslations('calendar')
   const tCommon = useTranslations('common')
 
@@ -141,7 +141,11 @@ export const CalendarEventForm = () => {
         <AppButton
           type='submit'
           className='w-full'
-          label={isSubmitting ? '...' : (t('addTitle') ?? tCommon('save'))}
+          label={
+            isSubmitting
+              ? '...'
+              : (tCalendar('dayPage.modals.addConfirm') ?? tCommon('save'))
+          }
           disabled={isSubmitting || pets.length === 0}
         />
       </div>
