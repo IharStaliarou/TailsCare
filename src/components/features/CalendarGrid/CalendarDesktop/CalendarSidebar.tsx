@@ -25,9 +25,9 @@ export const CalendarSidebar = () => {
         onClick={() => setIsCreateModalOpen(true)}
         disabled={petsLength === 0}
       />
-      <CalendarNavButtons />
+      <CalendarNavButtons disabled={petsLength === 0} />
 
-      <DatePicker />
+      <DatePicker disabled={petsLength === 0} />
     </aside>
   )
 }

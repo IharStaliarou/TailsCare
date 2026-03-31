@@ -5,7 +5,11 @@ import { useTranslations } from 'next-intl'
 
 import { useCalendarViewModel } from '../useCalendarViewModel'
 
-export const CalendarNavButtons = () => {
+interface ICalendarNavButtonsProps {
+  disabled?: boolean
+}
+
+export const CalendarNavButtons = ({ disabled }: ICalendarNavButtonsProps) => {
   const t = useTranslations('calendar')
 
   const {
@@ -26,18 +30,21 @@ export const CalendarNavButtons = () => {
         label='‹'
         onClick={handlePrevMonth}
         className='w-11.25 rounded-full'
+        disabled={disabled}
       />
       <AppButton
         variant={variant}
         label={t('todayButton')}
         onClick={() => goToToday(today)}
         className={'flex-1 rounded-full'}
+        disabled={disabled}
       />
       <AppButton
         variant='outline'
         label='›'
         onClick={handleNextMonth}
         className='w-11.25 rounded-full'
+        disabled={disabled}
       />
     </div>
   )

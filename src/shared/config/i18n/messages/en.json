@@ -192,6 +192,8 @@
     "title": "Care calendar",
     "subtitle": "Plans for taking care of your pets",
     "noPlans": "No plans for this day",
+    "noEvents": "You don't have any events yet.",
+    "noPetsForCalendar": "Add at least one pet to create and track plans for it",
     "types": {
       "vet": "Vet visit",
       "medication": "Medication",

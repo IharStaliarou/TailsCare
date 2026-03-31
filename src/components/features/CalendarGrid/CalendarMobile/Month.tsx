@@ -4,7 +4,11 @@ import { useCalendarViewModel } from '@/components/features/useCalendarViewModel
 import { AppButton } from '@/components/ui'
 import { isWeekend } from '@/entities/calendar/calendar.utils'
 
-export const Month = () => {
+interface IMonthProps {
+  disabled?: boolean
+}
+
+export const Month = ({ disabled }: IMonthProps) => {
   const { staticWeekdayLabels, monthDays, goToDay } = useCalendarViewModel()
 
   const MonthHeader = (
@@ -35,6 +39,7 @@ export const Month = () => {
             onClick={() => goToDay(date)}
             className='relative h-20'
             variant={outside ? 'outline' : 'secondary'}
+            disabled={disabled}
           >
             {day.hasEvents && (
               <span className='absolute top-1 right-1 flex h-2 w-2'>

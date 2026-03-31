@@ -5,7 +5,11 @@ import { DateUtils, isWeekend } from '@/entities/calendar/calendar.utils'
 
 import { useCalendarViewModel } from '../../useCalendarViewModel'
 
-export const DatePicker = () => {
+interface IDatePickerProps {
+  disabled?: boolean
+}
+
+export const DatePicker = ({ disabled }: IDatePickerProps) => {
   const {
     monthLabel,
     staticWeekdayLabels,
@@ -37,13 +41,16 @@ export const DatePicker = () => {
     const isWeekendDay = isWeekend(jsDay)
     const outside = !day.inCurrentMonth
 
+    const baseDisabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : ''
+
     if (outside) {
       return (
         <button
           key={day.date}
           type='button'
           onClick={() => handleSelectDate(dateObj)}
-          className='flex items-center justify-center rounded-full p-1 text-xs font-medium'
+          className={`flex items-center justify-center rounded-full p-1 text-xs font-medium ${baseDisabledClasses}`}
+          disabled={disabled}
         >
           <div className='relative flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold text-gray-300'>
             {day.dayNumber}
@@ -59,6 +66,9 @@ export const DatePicker = () => {
     }
 
     const buttonStyles = (() => {
+      if (disabled) {
+        return `text-gray-400 cursor-not-allowed`
+      }
       if (isSelected) {
         return `${COLORS_CONFIG.INDIGO[600]} ${COLORS_CONFIG.WHITE} shadow-sm`
       }
@@ -79,7 +89,8 @@ export const DatePicker = () => {
         key={day.date}
         type='button'
         onClick={() => handleSelectDate(dateObj)}
-        className='flex items-center justify-center rounded-full p-1 text-xs font-medium'
+        className={`flex items-center justify-center rounded-full p-1 text-xs font-medium ${baseDisabledClasses}`}
+        disabled={disabled}
       >
         <div
           className={`relative flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${buttonStyles}`}

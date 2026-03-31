@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { AppButton } from '@/components/ui'
 import { EditIcon, TrashIcon } from '@/components/ui/icons'
+import { useCalendarStore } from '@/entities/calendar/calendar.store'
 import { DEFAULT_PET_AVATAR } from '@/entities/pet/pet.constants'
 import { usePetStore } from '@/entities/pet/pet.store'
 import { IPet } from '@/entities/pet/pet.types'
@@ -22,10 +23,13 @@ export const PetCard = ({ pet }: IPetCardProps) => {
 
   const { id: petId, name, breed, currentWeight, type, avatar } = pet
   const { openEditModal, removePet } = usePetStore()
+  const { getEventsByPetId, removeEvent } = useCalendarStore()
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
   const handleDeletePet = () => {
+    const eventsToRemove = getEventsByPetId(petId)
+    eventsToRemove.forEach((event) => removeEvent(event.id))
     removePet(petId)
     setIsDeleteModalOpen(false)
   }
