@@ -8,10 +8,16 @@ import { useCalendarViewModel } from '../useCalendarViewModel'
 export const CalendarNavButtons = () => {
   const t = useTranslations('calendar')
 
-  const { handlePrevMonth, handleNextMonth, goToToday, today, isTodaySelected } =
-    useCalendarViewModel()
+  const {
+    handlePrevMonth,
+    handleNextMonth,
+    goToToday,
+    today,
+    isTodaySelected,
+    isCurrentMonthDisplayed,
+  } = useCalendarViewModel()
 
-  const variant = isTodaySelected ? 'secondary' : 'outline'
+  const variant = isTodaySelected && isCurrentMonthDisplayed ? 'secondary' : 'outline'
 
   return (
     <div className='flex gap-2'>

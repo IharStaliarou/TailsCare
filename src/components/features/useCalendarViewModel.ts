@@ -33,6 +33,7 @@ export interface ICalendarViewModel {
   isCreateModalOpen: boolean
   selectedDateString: string
   isTodaySelected: boolean
+  isCurrentMonthDisplayed: boolean
 
   handlePrevMonth: () => void
   handleNextMonth: () => void
@@ -105,6 +106,13 @@ export const useCalendarViewModel = (): ICalendarViewModel => {
 
   const isTodaySelected = selectedDateString === formatLocalDate(today)
 
+  const isCurrentMonthDisplayed = useMemo(
+    () =>
+      currentMonth.getMonth() === today.getMonth() &&
+      currentMonth.getFullYear() === today.getFullYear(),
+    [currentMonth, today]
+  )
+
   return {
     locale,
     today,
@@ -120,6 +128,7 @@ export const useCalendarViewModel = (): ICalendarViewModel => {
     isCreateModalOpen,
     selectedDateString,
     isTodaySelected,
+    isCurrentMonthDisplayed,
     handlePrevMonth,
     handleNextMonth,
     handleSelectDate,
