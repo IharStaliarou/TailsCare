@@ -14,8 +14,8 @@ import {
 import { useCalendarEvents } from '@/entities/calendar/hooks/useCalendarEvents'
 import { useWeekRange } from '@/entities/calendar/hooks/useWeekRange'
 import { usePetStore } from '@/entities/pet/pet.store'
+import { useRouter } from '@/shared/config/i18n'
 import { useLocale } from 'next-intl'
-import { useRouter } from 'next/navigation'
 
 export interface ICalendarViewModel {
   locale: string
